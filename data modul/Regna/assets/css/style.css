@@ -557,7 +557,7 @@ section {
 
 #about .about-container .background {
   min-height: 300px;
-  background: url(../img/about-img.jpg) center top no-repeat;
+  /* background: url(/img/layanan-01.jpg) center top no-repeat; */
   margin-bottom: 10px;
 }
 

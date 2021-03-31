@@ -45,7 +45,7 @@
     <div class="container-login100">
       <div class="wrap-login100">
         <div class="login100-pic js-tilt" data-tilt>
-          <img src="<?= base_url(''); ?>img/logo_circle.png" alt="IMG">
+          <img src="<?= base_url(''); ?>img/layanan-02.jpg" alt="IMG">
         </div>
 
         <form id="form-login" class="login100-form validate-form" action="<?= site_url('login_do/login') ?>" method="POST">

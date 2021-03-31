@@ -89,7 +89,7 @@
        
       <!--<a class=" navbar-brand brand-logo-mini" href="<?= base_url('home/dashboard') ?>"><img src="<?= base_url('img/') ?>logo-mini.png" alt="logo" /></a> -->
         <a class="navbar-brand brand-logo" href="#"><span style="color:#000">
-            <a class="navbar-brand brand-logo" href="<?= base_url('home/dashboard') ?>">
+            <a class="navbar-brand brand-logo" href="<?= base_url('') ?>">
               <img src="<?= base_url('img/') ?>desk_tik.png" alt="logo" /></a></span></a>
         <a class="navbar-brand brand-logo-mini" href="#"><span style="color:#000"><img height="50" src="<?= base_url('img/logo.png'); ?>"></span></a>
       </div>

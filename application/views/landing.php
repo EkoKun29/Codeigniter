@@ -27,16 +27,50 @@
     <!-- Template Main CSS File -->
     <link href="<?= base_url('data modul/Regna/'); ?>assets/css/style.css" rel="stylesheet">
 
+    <!-- js should be placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="<?= base_url("template/backend/js/jquery.js") ?>"></script>
+
     <!-- =======================================================
   * Template Name: Regna - v4.1.0
   * Template URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+    <style type="text/css">
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            /*background-color: #fff;*/
+            background-color: #0072ff;
+        }
+
+        .preloader .loading {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font: 14px arial;
+        }
+    </style>
 </head>
 
-<body>
 
+<body>
+    <!-- loader -->
+    <div class="preloader">
+        <div class="loading">
+            <img width="150" src="<?= base_url('img/logo_circle.png'); ?>">
+            <div class="jumping-dots-loader">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
         <div class="container d-flex justify-content-between align-items-center">
@@ -51,7 +85,7 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Layanan</a></li>
+                    <li><a class="nav-link scrollto" href="#portfolio">Layanan</a></li>
                     <!-- <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
                     <li><a class="nav-link scrollto" href="#team">Team</a></li>
                     <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
@@ -128,7 +162,7 @@
 
                     </div>
 
-                    <div class="col-lg-6 background order-lg-2 order-1" data-aos="fade-left" data-aos-delay="100"></div>
+                    <div class="col-lg-6 background order-lg-2 order-1" data-aos="fade-left" data-aos-delay="100" style=" background: url(<?= base_url() ?>img/layanan-01.jpg) center top no-repeat;"></div>
                 </div>
 
             </div>
@@ -136,7 +170,7 @@
 
 
         <!-- ======= Services Section ======= -->
-        <section id="services">
+        <!-- <section id="services">
             <div class="container" data-aos="fade-up">
                 <div class="section-header">
                     <h3 class="section-title">Layanan</h3>
@@ -189,7 +223,8 @@
                 </div>
 
             </div>
-        </section><!-- End Services Section -->
+        </section> -->
+        <!-- End Services Section -->
 
         <!-- ======= Call To Action Section ======= -->
         <section id="call-to-action">
@@ -206,7 +241,234 @@
 
             </div>
         </section><!-- End Call To Action Section -->
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+            <div class="container" data-aos="fade-up">
+                <div class="section-header">
+                    <h3 class="section-title">Semua Layanan</h3>
+                    <br><br>
+                    <!-- <p class="section-description">
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                        accusantium doloremque
+                    </p> -->
+                </div>
 
+                <!-- <div class="row" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-12 d-flex justify-content-center">
+                        <ul id="portfolio-flters">
+                            <li data-filter="*" class="filter-active">All</li>
+                            <li data-filter=".filter-app">App</li>
+                            <li data-filter=".filter-card">Card</li>
+                            <li data-filter=".filter-web">Web</li>
+                        </ul>
+                    </div>
+                </div> -->
+
+                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-app">
+                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 1</h4>
+                            <p>LAYANAN HOSTING APLIKASI DAN/ATAU DATA</p>
+                            <a href="<?= base_url('img/layanan'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-web">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 2</h4>
+                            <p>LAYANAN CLOUD SERVER</p>
+                            <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-app">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 3</h4>
+                            <p>LAYANAN CO-LOCATION</p>
+                            <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 4</h4>
+                            <p>LAYANAN DISASTER RECOVERY CENTER (DRC)</p>
+                            <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-web">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 5</h4>
+                            <p>LAYANAN PERTUKARAN DATA ELEKTRONIK</p>
+                            <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-app">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 6</h4>
+                            <p>LAYANAN DUKUNGAN INTERKONEKSI INFRASTRUKTUR</p>
+                            <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 7</h4>
+                            <p>LAYANAN PENGEMBANGAN INFRASTRUKTUR LAN UNIT PENGGUNA</p>
+                            <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 8</h4>
+                            <p>LAYANAN PEMBANGUNAN DAN PENGEMBANGAN SISTEM TIK</p>
+                            <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-app">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 9</h4>
+                            <p>LAYANAN UJI KELAYAKAN SISTEM</p>
+                            <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-web">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 10</h4>
+                            <p>LAYANAN KONEKSI INTERNET</p>
+                            <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-app">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 11</h4>
+                            <p>LAYANAN SURAT ELEKTRONIK</p>
+                            <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 12</h4>
+                            <p>LAYANAN AKUN APLIKASI DAN SHARING FOLDER</p>
+                            <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-web">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 13</h4>
+                            <p>LAYANAN INSTALASI DAN KONFIGURASI DESKTOP/NOTEBOOK</p>
+                            <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-app">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 14</h4>
+                            <p>LAYANAN PENGGUNAAN PERANGKAT LUNAK BERLISENSI</p>
+                            <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 15</h4>
+                            <p>LAYANAN NARASUMBER BIDANG TIK</p>
+                            <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 16</h4>
+                            <p>LAYANAN PENINGKATAN KOMPETENSI TIK</p>
+                            <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-web">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 17</h4>
+                            <p>LAYANAN DUKUNGAN KEGIATAN KHUSUS</p>
+                            <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-app">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 18</h4>
+                            <p>LAYANAN VIDEO CONFERENCE</p>
+                            <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 19</h4>
+                            <p>LAYANAN DUKUNGAN PIMPINAN</p>
+                            <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
+                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="" />
+                        <div class="portfolio-info">
+                            <h4>Layanan 20</h4>
+                            <p>LAYANAN INFORMASI TIK</p>
+                            <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+        <!-- End Portfolio Section -->
 
         <!-- ======= Contact Section ======= -->
         <section id="contact">
@@ -222,7 +484,7 @@
             <div class="container mt-5">
                 <div class="row justify-content-center">
 
-                    <div class="col-lg-10 col-md-8">
+                    <div class="col-lg-8 col-md-6">
 
                         <div class="info">
                             <div>
@@ -278,6 +540,12 @@
 
     <!-- Template Main JS File -->
     <script src="<?= base_url('data modul/Regna/'); ?>assets/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(".preloader").fadeOut();
+        })
+    </script>
 
 </body>
 
