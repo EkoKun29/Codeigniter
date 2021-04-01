@@ -32,8 +32,6 @@ class Login_do extends CI_Controller
             $group = $this->authentication_model->getGroup($data['UserId']);
             $_SESSION['siltap']['groupid'] = $group->GroupId;
             $_SESSION['siltap']['group'] = $group->GroupName;
-            $_SESSION['siltap']['kecid'] = $data['KecId'];
-            $_SESSION['siltap']['desaid'] = $data['DesaId'];
             $_SESSION['siltap']['userid'] = $data['UserId'];
             $_SESSION['siltap']['username'] = $data['UserName'];
             $_SESSION['siltap']['groupid'] = $data['UserGroupGroupId'];

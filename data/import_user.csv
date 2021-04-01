@@ -1,0 +1,52 @@
+﻿UserId;UserNip;UserRealName;UserName;UserPassword;UserActive;UserHp;UserEmail;UserFoto;UserExpired;UserLastLogin
+2;;Super Administrator;Super Administrator;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-01;0000-00-00 00:00:01
+3;;Sekretariat Daerah;Sekretariat Daerah;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-02;0000-00-00 00:00:02
+4;;Sekretariat Dewan;Sekretariat Dewan;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-03;0000-00-00 00:00:03
+5;;BAPPEDA Pati;BAPPEDA Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-04;0000-00-00 00:00:04
+6;;BPBD Pati;BPBD Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-05;0000-00-00 00:00:05
+7;;BPKAD Pati;BPKAD Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-06;0000-00-00 00:00:06
+8;;Dinas Arpusda Pati;Dinas Arpusda Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-07;0000-00-00 00:00:07
+9;;Dinas Ketahanan Pangan Pati;Dinas Ketahanan Pangan Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-08;0000-00-00 00:00:08
+10;;Dinkes Pati;Dinkes Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-09;0000-00-00 00:00:09
+11;;Dinkopumkm Pati;Dinkopumkm Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-10;0000-00-00 00:00:10
+12;;Dinporapar Pati;Dinporapar Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-11;0000-00-00 00:00:11
+13;;Dinsos Pati;Dinsos Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-12;0000-00-00 00:00:12
+14;;Disdagperin Pati;Disdagperin Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-13;0000-00-00 00:00:13
+15;;Disdikbud Pati;Disdikbud Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-14;0000-00-00 00:00:14
+16;;Disdukcapil Pati;Disdukcapil Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-15;0000-00-00 00:00:15
+17;;Dishub Pati;Dishub Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-16;0000-00-00 00:00:16
+18;;Diskominfo Pati;Diskominfo Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-17;0000-00-00 00:00:17
+19;;Disnaker Pati;Disnaker Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-18;0000-00-00 00:00:18
+20;;Disperkim Pati;Disperkim Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-19;0000-00-00 00:00:19
+21;;Dispermades Pati;Dispermades Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-20;0000-00-00 00:00:20
+22;;Dispertan Pati;Dispertan Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-21;0000-00-00 00:00:21
+23;;DKP Pati;DKP Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-22;0000-00-00 00:00:22
+24;;DLH Pati;DLH Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-23;0000-00-00 00:00:23
+25;;DPMPTSP Pati;DPMPTSP Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-24;0000-00-00 00:00:24
+26;;DPUTR Pati;DPUTR Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-25;0000-00-00 00:00:25
+27;;Inspektorat Pati;Inspektorat Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-26;0000-00-00 00:00:26
+28;;Kesbangpol Pati;Kesbangpol Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-27;0000-00-00 00:00:27
+29;;SatpolPP Pati;SatpolPP Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-28;0000-00-00 00:00:28
+30;;RSUD Soewondo Pati;RSUD Soewondo Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-29;0000-00-00 00:00:29
+31;;RSU Kayen Pati;RSU Kayen Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-30;0000-00-00 00:00:30
+32;;Kecamatan Batangan Pati;Kecamatan Batangan Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-31;0000-00-00 00:00:31
+33;;Kecamatan Cluwak Pati;Kecamatan Cluwak Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-32;0000-00-00 00:00:32
+34;;Kecamatan Dukuhseti Pati;Kecamatan Dukuhseti Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-33;0000-00-00 00:00:33
+35;;Kecamatan Gabus Pati;Kecamatan Gabus Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-34;0000-00-00 00:00:34
+36;;Kecamatan Gembong Pati;Kecamatan Gembong Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-35;0000-00-00 00:00:35
+37;;Kecamatan Gunungwungkal Pati;Kecamatan Gunungwungkal Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-36;0000-00-00 00:00:36
+38;;Kecamatan Jaken Pati;Kecamatan Jaken Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-37;0000-00-00 00:00:37
+39;;Kecamatan Jakenan Pati;Kecamatan Jakenan Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-38;0000-00-00 00:00:38
+40;;Kecamatan Juwana Pati;Kecamatan Juwana Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-39;0000-00-00 00:00:39
+41;;Kecamatan Kayen Pati;Kecamatan Kayen Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-40;0000-00-00 00:00:40
+42;;Kecamatan Margorejo Pati;Kecamatan Margorejo Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-41;0000-00-00 00:00:41
+43;;Kecamatan Margoyoso Pati;Kecamatan Margoyoso Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-42;0000-00-00 00:00:42
+44;;Kecamatan Pati Kab. Pati;Kecamatan Pati Kab. Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-43;0000-00-00 00:00:43
+45;;Kecamatan Pucakwangi Pati;Kecamatan Pucakwangi Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-44;0000-00-00 00:00:44
+46;;Kecamatan Sukolilo Pati;Kecamatan Sukolilo Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-45;0000-00-00 00:00:45
+47;;Kecamatan Tambakromo Pati;Kecamatan Tambakromo Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-46;0000-00-00 00:00:46
+48;;Kecamatan Tayu Pati;Kecamatan Tayu Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-47;0000-00-00 00:00:47
+49;;Kecamatan Tlogowungu Pati;Kecamatan Tlogowungu Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-48;0000-00-00 00:00:48
+50;;Kecamatan Trangkil Pati;Kecamatan Trangkil Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-49;0000-00-00 00:00:49
+51;;Kecamatan Wedarijaksa Pati;Kecamatan Wedarijaksa Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-50;0000-00-00 00:00:50
+52;;Kecamatan Winong Pati;Kecamatan Winong Pati;a94a8fe5ccb19ba61c4c0873d391e987982fbbd3;1;;;;0000-00-51;0000-00-00 00:00:51
