@@ -82,9 +82,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Rating</h4>
                     <?php foreach ($list_bulan as $data) {
-
                         $stt = $this->pembayaran_model->status_approval($data->Bulan);
-
                     ?>
                         <div class="wrapper d-flex align-items-center py-2 border-bottom">
                             <div class="wrapper ml-3">

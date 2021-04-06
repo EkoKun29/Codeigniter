@@ -22,6 +22,18 @@ class Welcome extends CI_Controller
 	public function index()
 	{
 		$this->load->view('landing');
-		// redirect('landing');
+
+		// $user = $this->db->query("SELECT * FROM yk_user")->result();
+
+		// foreach ($user as $u) {
+		// $usr  = $u->UserName;
+		// $nip = preg_replace('/_.*/', '', $usr);
+		// if ($u->UserId > 7718 and $u->UserId < 8000) {
+		// 	$pass = sha1($usr);
+		// 	echo $pass . "<br>";
+
+		// 	$this->db->query("UPDATE yk_user SET UserPassword='$pass' WHERE UserId='$u->UserId' ");
+		// }
+		// }
 	}
 }
