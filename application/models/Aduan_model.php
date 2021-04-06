@@ -21,7 +21,11 @@ class Aduan_model extends Ci_Model
 
     function getAll()
     {
-        $query = $this->db->get('aduan');
+
+        $this->db->select('*');
+        $this->db->from('aduan a');
+        $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
+        $query = $this->db->get();
         return $query->result();
     }
     function getId($kecid)

@@ -17,22 +17,31 @@
                                     <th>ID</th>
                                     <th>Kategori</th>
                                     <th>Bidang</th>
+                                    <th>Proses</th>
                                     <th style="width:100px;">#</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($aduan as $data) { ?>
+                                <?php foreach ($aduan as $data) {
+                                    if ($data->AduanProses == "diterima") {
+                                        $status_proses = "badge-success";
+                                    } elseif ($data->AduanProses == "ditolak") {
+                                        $status_proses = "badge-danger";
+                                    } else {
+                                        $status_proses = "badge-warning";
+                                    }
+
+                                ?>
                                     <tr>
                                         <td><?= $data->AduanId; ?></td>
-                                        <td><?= $data->AduanKategoriId; ?></td>
+                                        <td><?= $data->KategoriNama; ?></td>
                                         <td><?= $data->AduanBidang; ?></td>
+                                        <td>
+                                            <div class="badge <?= $status_proses ?> badge-fw"><?= $data->AduanProses; ?></div>
+                                        </td>
                                         <td>
                                             <a href="<?= base_url("master/kategori/update/" . $data->AduanId) ?>" class="btn btn-outline-info">
                                                 <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                            </a>
-
-                                            <a href="javascript:;" class="btn btn-outline-danger" onclick="hapus(<?= $data->AduanId ?>)">'
-                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                             </a>
                                         </td>
                                     </tr>
