@@ -1,59 +1,146 @@
+<?php
+function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
+{
+    // if ($aduan_id != NULL) {
+    //     if ($aduan_proses == "permohonan") {
+    //         $deskripsi = $aduan_deskripsi;
+    //     }
+    // } else {
+    // }
+}
+?>
 <div class="content-wrapper">
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="btn-group pull-right">
-                    <a href="<?= base_url('master/kategori/add') ?>" class="btn btn-success">
-                        <i class="fa fa-plus"></i> Tambah Baru
-                    </a>
-                </div>
-                <h3 class="card-title">list kategori</h3>
-                <div class="row">
-                    <div class="card"> </div>
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="example2">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Kategori</th>
-                                    <th>Bidang</th>
-                                    <th>Proses</th>
-                                    <th style="width:100px;">#</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($aduan as $data) {
-                                    if ($data->AduanProses == "diterima") {
-                                        $status_proses = "badge-success";
-                                    } elseif ($data->AduanProses == "ditolak") {
-                                        $status_proses = "badge-danger";
-                                    } else {
-                                        $status_proses = "badge-warning";
-                                    }
-
-                                ?>
+    <div class="row">
+        <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="btn-group pull-right">
+                        <a href="<?= base_url('master/aduan/add') ?>" class="btn btn-success">
+                            <i class="fa fa-plus"></i> Tambah Baru
+                        </a>
+                    </div>
+                    <h3 class="card-title">Permohonan</h3>
+                    <div class="row">
+                        <div class="card"> </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="example2">
+                                <thead>
                                     <tr>
-                                        <td><?= $data->AduanId; ?></td>
-                                        <td><?= $data->KategoriNama; ?></td>
-                                        <td><?= $data->AduanBidang; ?></td>
-                                        <td>
-                                            <div class="badge <?= $status_proses ?> badge-fw"><?= $data->AduanProses; ?></div>
-                                        </td>
-                                        <td>
-                                            <a href="<?= base_url("master/kategori/update/" . $data->AduanId) ?>" class="btn btn-outline-info">
-                                                <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                            </a>
-                                        </td>
+                                        <th>Tiket</th>
+                                        <th>Kategori</th>
+                                        <th>Bidang</th>
+                                        <th>Deskripsi</th>
+                                        <th>Proses</th>
+                                        <th style="width:100px;">#</th>
                                     </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($aduan as $data) {
+                                        if ($data->AduanProses == "diterima") {
+                                            $status_proses = "badge-success";
+                                        } elseif ($data->AduanProses == "ditolak") {
+                                            $status_proses = "badge-danger";
+                                        } else {
+                                            $status_proses = "badge-warning";
+                                        }
+
+                                    ?>
+                                        <tr>
+                                            <td><?= $data->NoTiket; ?></td>
+                                            <td><?= $data->KategoriNama; ?></td>
+                                            <td><?= $data->AduanBidang; ?></td>
+                                            <td><?= $data->AduanDeskripsi; ?></td>
+                                            <td>
+                                                <div class="badge <?= $status_proses ?> badge-fw"><?= $data->AduanProses; ?></div>
+                                            </td>
+                                            <td>
+                                                <a href="<?= base_url("master/aduan/detail/" . $data->AduanId) ?>" class="btn btn-outline-primary">
+                                                    <i class="ace-icon fa fa-list bigger-120"></i>
+                                                </a>
+                                                <a href="<?= base_url("master/aduan/update/" . $data->AduanId) ?>" class="btn btn-outline-info">
+                                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                </a>
+
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">PROSES PERMOHONAN</h4>
+                    <p class="card-description">
+                        <?php if ($aduanid != NULL) { ?>
+                            <?= $aduanid->AduanDeskripsi ?>
+                            <br>
+                            <a class="btn btn-primary" href="<?= base_url('master/aduan/files'); ?>">Files</a>
+                        <?php } else { ?>
+                            <span style="color: grey;">Aduan Belum Dipilih</span>
+                        <?php } ?>
+                    </p>
+                    <div class="mt-5">
+                        <div class="timeline">
+                            <div class="timeline-wrapper timeline-wrapper-warning">
+                                <div class="timeline-badge"></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h6 class="timeline-title">Permohonan</h6>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <?php if ($aduanid != NULL) { ?>
+                                            <?= $aduanid->AduanDeskripsi ?>
+                                        <?php } else { ?>
 
+                                            <span style="color: grey;">Aduan Belum Dipilih</span>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-wrapper timeline-inverted timeline-wrapper-danger">
+                                <div class="timeline-badge"></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h6 class="timeline-title">Tindak Lanjut</h6>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <?php if ($aduanid->AduanProses == "diterima") { ?>
+                                            <?= $aduanid->AduanDeskripsi ?>
+                                        <?php } else { ?>
+                                            <span style="color: grey;">Belum Ada Tindak Lanjut</span>
+
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-wrapper timeline-wrapper-success">
+                                <div class="timeline-badge"></div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h6 class="timeline-title">Selesai</h6>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <?php if ($aduanid->AduanProses == "diterima") { ?>
+                                            <?= $aduanid->AduanDeskripsi ?>
+                                        <?php } else { ?>
+                                            <span style="color: grey;">Belum Ada Tindak Lanjut</span>
+
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 
@@ -94,7 +181,7 @@
             callback: function(result) {
                 if (result) {
                     $.post(
-                        '<?= base_url("master/kategori_do/delete") ?>', {
+                        '<?= base_url("master/aduan_do/delete") ?>', {
                             id: id
                         },
                         function(data) {

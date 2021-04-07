@@ -28,11 +28,23 @@ class Aduan_model extends Ci_Model
         $query = $this->db->get();
         return $query->result();
     }
-    function getId($kecid)
+    function getId($aduanid)
     {
-        $this->db->where('AduanId', $kecid);
-        $query = $this->db->get('aduan');
-        return $query->result();
+        $this->db->select('*');
+        $this->db->from('aduan a');
+        $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
+        // $this->db->join('tindak_lanjut c', 'c.TindakLanjutAduanId = a.AduanId');
+        $this->db->where('AduanId', $aduanid);
+        $query = $this->db->get();
+
+        return $query->row();
+    }
+
+    function getTindakLanjut($aduanid)
+    {
+        $this->db->where('TindakLanjutAduanId');
+        $q = $this->db->get('tindak_lanjut');
+        return $q;
     }
 
 
@@ -59,6 +71,11 @@ class Aduan_model extends Ci_Model
         $user['AduanNama'] = NULL;
         $user['AduanBidang'] = NULL;
         return $user;
+    }
+    function getKategori()
+    {
+        $q = $this->db->get('ref_kategori');
+        return $q->result();
     }
 }
 

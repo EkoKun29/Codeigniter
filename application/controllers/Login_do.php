@@ -30,6 +30,14 @@ class Login_do extends CI_Controller
         if (sizeof($data) > 0) {
 
             $group = $this->authentication_model->getGroup($data['UserId']);
+            if ($data['UserName'] != "admin") {
+                $pegawai = $this->authentication_model->pegawaiByNip($data['UserNip']);
+                $_SESSION['siltap']['kdlokasi'] =  $pegawai->kdlokasi;
+                $_SESSION['siltap']['kdinstansi'] =  $pegawai->kdinstansi;
+                $_SESSION['siltap']['nminstansi'] =  $pegawai->nminstansi;
+                $_SESSION['siltap']['nmjabatan'] =  $pegawai->nmjabatan;
+            }
+
             $_SESSION['siltap']['groupid'] = $group->GroupId;
             $_SESSION['siltap']['group'] = $group->GroupName;
             $_SESSION['siltap']['userid'] = $data['UserId'];

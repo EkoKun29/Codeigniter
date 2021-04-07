@@ -164,6 +164,7 @@ class Authentication_model extends CI_Model
         $this->db->select('*');
         $this->db->from('yk_group');
         $this->db->join('yk_user_group', 'yk_user_group.UserGroupGroupId = yk_group.GroupId');
+        // $this->db->join('_pegawai', '_pegawai.nip = yk_user.UserNip');
         $this->db->where('yk_user_group.UserGroupUserId', $idUser);
         return $this->db->get()->row();
     }
@@ -172,6 +173,13 @@ class Authentication_model extends CI_Model
     {
         $this->db->where('UserId', $userid);
         $q = $this->db->get('yk_user');
+        return $q->row();
+    }
+
+    function pegawaiByNip($nip)
+    {
+        $this->db->where('nip', $nip);
+        $q = $this->db->get('_pegawai');
         return $q->row();
     }
 }

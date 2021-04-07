@@ -108,7 +108,7 @@
                     <li><a class="nav-link scrollto" href="#contact">Kontak</a></li>
 
                     <li><a class="rounded" href="<?= base_url('home/dashboard'); ?>">Login</a></li>
-                    <li><a class="rounded" href="<?= base_url('home/dashboard'); ?>">Registrasi</a></li>
+                    <!-- <li><a class="rounded" href="<?= base_url('home/dashboard'); ?>">Registrasi</a></li> -->
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
