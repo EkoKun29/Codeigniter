@@ -32,6 +32,7 @@ class Login_do extends CI_Controller
             $group = $this->authentication_model->getGroup($data['UserId']);
             if ($data['UserName'] != "admin") {
                 $pegawai = $this->authentication_model->pegawaiByNip($data['UserNip']);
+                $_SESSION['siltap']['nip'] =  $pegawai->nip;
                 $_SESSION['siltap']['kdlokasi'] =  $pegawai->kdlokasi;
                 $_SESSION['siltap']['kdinstansi'] =  $pegawai->kdinstansi;
                 $_SESSION['siltap']['nminstansi'] =  $pegawai->nminstansi;
@@ -45,8 +46,6 @@ class Login_do extends CI_Controller
             $_SESSION['siltap']['groupid'] = $data['UserGroupGroupId'];
             $_SESSION['siltap']['realname'] = $data['UserRealName'];
 
-            //$_SESSION['persediaan']['unitkerjaid'] = $data['UserUnitKerjaId'];
-            //$_SESSION['persediaan']['unitkerjanama'] = $data['UnitKerjaNama'];
             return TRUE;
         } else {
             $this->form_validation->set_message("validate", "Nama Pengguna atau Kata Sandi salah.");

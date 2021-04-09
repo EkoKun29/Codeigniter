@@ -45,7 +45,9 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                         }
 
                                     ?>
-                                        <tr>
+                                        <tr <?php if ($data->AduanId == $aduanid->AduanId) {
+                                                echo "style='background-color:rgb(0, 180, 255); color:white'";
+                                            } ?>>
                                             <td><?= $data->NoTiket; ?></td>
                                             <td><?= $data->KategoriNama; ?></td>
                                             <td><?= $data->AduanBidang; ?></td>
@@ -54,10 +56,10 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                                 <div class="badge <?= $status_proses ?> badge-fw"><?= $data->AduanProses; ?></div>
                                             </td>
                                             <td>
-                                                <a href="<?= base_url("master/aduan/detail/" . $data->AduanId) ?>" class="btn btn-outline-primary">
+                                                <a href="<?= base_url("master/aduan/detail/" . $data->AduanId) ?>" class="btn btn-primary">
                                                     <i class="ace-icon fa fa-list bigger-120"></i>
                                                 </a>
-                                                <a href="<?= base_url("master/aduan/update/" . $data->AduanId) ?>" class="btn btn-outline-info">
+                                                <a href="<?= base_url("master/aduan/update/" . $data->AduanId) ?>" class="btn btn-info">
                                                     <i class="ace-icon fa fa-pencil bigger-120"></i>
                                                 </a>
 
@@ -77,65 +79,99 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                     <h4 class="card-title">PROSES PERMOHONAN</h4>
                     <p class="card-description">
                         <?php if ($aduanid != NULL) { ?>
-                            <?= $aduanid->AduanDeskripsi ?>
-                            <br>
-                            <a class="btn btn-primary" href="<?= base_url('master/aduan/files'); ?>">Files</a>
-                        <?php } else { ?>
-                            <span style="color: grey;">Aduan Belum Dipilih</span>
-                        <?php } ?>
-                    </p>
-                    <div class="mt-5">
-                        <div class="timeline">
-                            <div class="timeline-wrapper timeline-wrapper-warning">
-                                <div class="timeline-badge"></div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h6 class="timeline-title">Permohonan</h6>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <?php if ($aduanid != NULL) { ?>
-                                            <?= $aduanid->AduanDeskripsi ?>
-                                        <?php } else { ?>
+                    <h4><?= $aduanid->AduanDeskripsi ?>
 
-                                            <span style="color: grey;">Aduan Belum Dipilih</span>
-                                        <?php } ?>
-                                    </div>
+                    </h4><br>
+                    <span style="color: grey;"><?= $aduanid->AduanTglPermohonan ?></span>
+
+                    <?php if ($aduanid->AduanFiles1 != NULL) { ?>
+                        <div class="wrapper d-flex align-items-center py-2 border-bottom">
+                            <div class="wrapper ml-3">
+                                <h6 class="ml-1 mb-1">Files 1</h6>
+                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i>asfdasfafasf.doc</small>
+                            </div>
+                            <div class="badge badge-pill badge-info ml-auto px-1 py-1"><i class="mdi mdi-check font-weight-bold"></i></div>
+                        </div>
+                    <?php } ?>
+                    <?php if ($aduanid->AduanFiles2 != NULL) { ?>
+                        <div class="wrapper d-flex align-items-center py-2 border-bottom">
+                            <div class="wrapper ml-3">
+                                <h6 class="ml-1 mb-1">Files 2</h6>
+                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i>asfdasfafasf.doc</small>
+                            </div>
+                            <div class="badge badge-pill badge-info ml-auto px-1 py-1"><i class="mdi mdi-check font-weight-bold"></i></div>
+                        </div>
+                    <?php } ?>
+
+                    <?php if ($aduanid->AduanFiles3 != NULL) { ?>
+                        <div class="wrapper d-flex align-items-center py-2 border-bottom">
+                            <div class="wrapper ml-3">
+                                <h6 class="ml-1 mb-1">Files 3</h6>
+                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i>asfdasfafasf.doc</small>
+                            </div>
+                            <div class="badge badge-pill badge-info ml-auto px-1 py-1"><i class="mdi mdi-check font-weight-bold"></i></div>
+                        </div>
+                    <?php } ?>
+
+
+
+
+                <?php } else { ?>
+                    <span style="color: grey;">Aduan Belum Dipilih</span>
+                <?php } ?>
+                </p>
+                <div class="mt-5">
+                    <div class="timeline">
+                        <div class="timeline-wrapper timeline-wrapper-warning">
+                            <div class="timeline-badge"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h6 class="timeline-title">Permohonan</h6>
+                                </div>
+                                <div class="timeline-body">
+                                    <?php if ($aduanid != NULL) { ?>
+                                        <?= $aduanid->AduanDeskripsi ?>
+                                    <?php } else { ?>
+
+                                        <span style="color: grey;">Aduan Belum Dipilih</span>
+                                    <?php } ?>
                                 </div>
                             </div>
-                            <div class="timeline-wrapper timeline-inverted timeline-wrapper-danger">
-                                <div class="timeline-badge"></div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h6 class="timeline-title">Tindak Lanjut</h6>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <?php if ($aduanid->AduanProses == "diterima") { ?>
-                                            <?= $aduanid->AduanDeskripsi ?>
-                                        <?php } else { ?>
-                                            <span style="color: grey;">Belum Ada Tindak Lanjut</span>
+                        </div>
+                        <div class="timeline-wrapper timeline-inverted timeline-wrapper-danger">
+                            <div class="timeline-badge"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h6 class="timeline-title">Tindak Lanjut</h6>
+                                </div>
+                                <div class="timeline-body">
+                                    <?php if ($aduanid->AduanProses == "diterima") { ?>
+                                        <?= $aduanid->AduanDeskripsi ?>
+                                    <?php } else { ?>
+                                        <span style="color: grey;">Belum Ada Tindak Lanjut</span>
 
-                                        <?php } ?>
-                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
-                            <div class="timeline-wrapper timeline-wrapper-success">
-                                <div class="timeline-badge"></div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h6 class="timeline-title">Selesai</h6>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <?php if ($aduanid->AduanProses == "diterima") { ?>
-                                            <?= $aduanid->AduanDeskripsi ?>
-                                        <?php } else { ?>
-                                            <span style="color: grey;">Belum Ada Tindak Lanjut</span>
+                        </div>
+                        <div class="timeline-wrapper timeline-wrapper-success">
+                            <div class="timeline-badge"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h6 class="timeline-title">Selesai</h6>
+                                </div>
+                                <div class="timeline-body">
+                                    <?php if ($aduanid->AduanProses == "diterima") { ?>
+                                        <?= $aduanid->AduanDeskripsi ?>
+                                    <?php } else { ?>
+                                        <span style="color: grey;">Belum Ada Tindak Lanjut</span>
 
-                                        <?php } ?>
-                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

@@ -19,22 +19,23 @@ class Aduan_model extends Ci_Model
         return $query->row_array();
     }
 
-    function getAll()
+    function getAll($nip)
     {
-
         $this->db->select('*');
         $this->db->from('aduan a');
         $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
+        $this->db->where('a.AduanNipPengirim', $nip);
         $query = $this->db->get();
         return $query->result();
     }
-    function getId($aduanid)
+    function getId($aduanid, $nip)
     {
         $this->db->select('*');
         $this->db->from('aduan a');
         $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
         // $this->db->join('tindak_lanjut c', 'c.TindakLanjutAduanId = a.AduanId');
-        $this->db->where('AduanId', $aduanid);
+        $this->db->where('a.AduanId', $aduanid);
+        $this->db->where('a.AduanNipPengirim', $nip);
         $query = $this->db->get();
 
         return $query->row();
@@ -76,6 +77,18 @@ class Aduan_model extends Ci_Model
     {
         $q = $this->db->get('ref_kategori');
         return $q->result();
+    }
+    function getKategoriId($kategoriid)
+    {
+        $this->db->where('KategoriId', $kategoriid);
+        $q = $this->db->get('ref_kategori');
+        return $q->row();
+    }
+    function lastid()
+    {
+        $this->db->order_by('AduanId', 'desc');
+        $q = $this->db->get('aduan');
+        return $q;
     }
 }
 
