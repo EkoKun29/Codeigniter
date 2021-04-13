@@ -14,7 +14,7 @@ class Kategori_model extends Ci_Model
     // }
     function getById($id)
     {
-        $this->db->where("kategori_id", $id);
+        $this->db->where("KategoriId", $id);
         $query = $this->db->get('ref_kategori');
         return $query->row_array();
     }
@@ -26,7 +26,7 @@ class Kategori_model extends Ci_Model
     }
     function getId($kecid)
     {
-        $this->db->where('kategori_id', $kecid);
+        $this->db->where('KategoriId', $kecid);
         $query = $this->db->get('ref_kategori');
         return $query->result();
     }
@@ -39,21 +39,21 @@ class Kategori_model extends Ci_Model
 
     function update($id, $data)
     {
-        $this->db->where('kategori_id', $id);
+        $this->db->where('KategoriId', $id);
         $this->db->update('ref_kategori', $data);
     }
 
     function delete($id)
     {
-        $this->db->where('kategori_id', $id);
+        $this->db->where('KategoriId', $id);
         $this->db->delete('ref_kategori');
     }
 
     function getEmptyUser()
     {
-        $user['kategori_id'] = NULL;
-        $user['kategori_nama'] = NULL;
-        $user['bidang'] = NULL;
+        $user['KategoriId'] = NULL;
+        $user['KategoriNama'] = NULL;
+        $user['KategoriBidang'] = NULL;
         return $user;
     }
 }

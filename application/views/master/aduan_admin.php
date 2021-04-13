@@ -14,11 +14,11 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
         <div class="col-lg-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <div class="btn-group pull-right">
+                    <!-- <div class="btn-group pull-right">
                         <a href="<?= base_url('master/aduan/add') ?>" class="btn btn-success">
                             <i class="fa fa-plus"></i> Tambah Baru
                         </a>
-                    </div>
+                    </div> -->
                     <h3 class="card-title">Permohonan</h3>
                     <div class="row">
                         <div class="card"> </div>
@@ -27,9 +27,8 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                 <thead>
                                     <tr>
                                         <th>Tiket</th>
-                                        <th>Kategori</th>
-                                        <th>Bidang</th>
-                                        <th>Deskripsi</th>
+                                        <th>Pengirim</th>
+                                        <th>Jabatan</th>
                                         <th>Proses</th>
                                         <th style="width:100px;">#</th>
                                     </tr>
@@ -49,9 +48,9 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                                 echo "style='background-color:rgb(0, 180, 255); color:white'";
                                             } ?>>
                                             <td><?= $data->NoTiket; ?></td>
-                                            <td><?= $data->KategoriNama; ?></td>
-                                            <td><?= $data->AduanBidang; ?></td>
-                                            <td><?= $data->AduanDeskripsi; ?></td>
+                                            <td><?= $data->AduanNamaPengirim; ?></td>
+                                            <!-- <td><?= $data->AduanBidang; ?></td> -->
+                                            <td><?= $data->nmjabatan; ?></td>
                                             <td>
                                                 <div class="badge <?= $status_proses ?> badge-fw"><?= $data->AduanProses; ?></div>
                                             </td>
@@ -59,7 +58,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                                 <a href="<?= base_url("master/aduan/detail/" . $data->AduanId) ?>" class="btn btn-primary">
                                                     <i class="ace-icon fa fa-list bigger-120"></i>
                                                 </a>
-                                                <a href="<?= base_url("master/aduan/update/update/" . $data->AduanId) ?>" class="btn btn-info">
+                                                <a href="<?= base_url("master/aduan/update/" . $data->AduanId) ?>" class="btn btn-info">
                                                     <i class="ace-icon fa fa-pencil bigger-120"></i>
                                                 </a>
 
@@ -130,7 +129,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                 </div>
                                 <div class="timeline-body">
                                     <?php if ($aduanid != NULL) { ?>
-                                        <?= $aduanid->AduanDeskripsi ?>
+                                        <?= $aduanid->KategoriNama ?>
                                     <?php } else { ?>
 
                                         <span style="color: grey;">Aduan Belum Dipilih</span>

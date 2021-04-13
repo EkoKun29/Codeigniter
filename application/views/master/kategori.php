@@ -23,15 +23,15 @@
                             <tbody>
                                 <?php foreach ($kategori as $data) { ?>
                                     <tr>
-                                        <td><?= $data->kategori_id; ?></td>
-                                        <td><?= $data->kategori_nama; ?></td>
-                                        <td><?= $data->bidang; ?></td>
+                                        <td><?= $data->KategoriId; ?></td>
+                                        <td><?= $data->KategoriNama; ?></td>
+                                        <td><?= $data->KategoriBidang; ?></td>
                                         <td>
-                                            <a href="<?= base_url("master/kategori/update/" . $data->kategori_id) ?>" class="btn btn-outline-info">
+                                            <a href="<?= base_url("master/kategori/update/" . $data->KategoriId) ?>" class="btn btn-outline-info">
                                                 <i class="ace-icon fa fa-pencil bigger-120"></i>
                                             </a>
 
-                                            <a href="javascript:;" class="btn btn-outline-danger" onclick="hapus(<?= $data->kategori_id ?>)">'
+                                            <a href="javascript:;" class="btn btn-outline-danger" onclick="hapus(<?= $data->KategoriId ?>)">'
                                                 <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                             </a>
                                         </td>

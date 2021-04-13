@@ -28,14 +28,35 @@ class Aduan_model extends Ci_Model
         $query = $this->db->get();
         return $query->result();
     }
-    function getId($aduanid, $nip)
+    function getAllByBidang($bid)
+    {
+        // $user = $this->db->query('SELECT * FROM ');
+        $this->db->select('*');
+        $this->db->from('aduan a');
+        $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
+        $this->db->join('_lokasi c', 'c.kdlokasi = a.AduanKdLokasi');
+        $this->db->where('a.AduanBidang', $bid);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function getAllByAdmin()
+    {
+        $this->db->select('*');
+        $this->db->from('aduan a');
+        $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
+        $this->db->join('_lokasi c', 'c.kdlokasi = a.AduanKdLokasi');
+        // $this->db->where('a.AduanNipPengirim', $nip);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    function getId($aduanid)
     {
         $this->db->select('*');
         $this->db->from('aduan a');
         $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
         // $this->db->join('tindak_lanjut c', 'c.TindakLanjutAduanId = a.AduanId');
         $this->db->where('a.AduanId', $aduanid);
-        $this->db->where('a.AduanNipPengirim', $nip);
+        // $this->db->where('a.AduanNipPengirim', $nip);
         $query = $this->db->get();
 
         return $query->row();
@@ -65,7 +86,22 @@ class Aduan_model extends Ci_Model
         $this->db->where('AduanId', $id);
         $this->db->delete('aduan');
     }
+    function tindak_lanjut($id, $data)
+    {
+        $this->db->where('AduanId', $id);
+        $this->db->update('aduan', $data);
+    }
+    function add_tindak_lanjut($data)
+    {
+        $this->db->insert('tindak_lanjut', $data);
+    }
 
+    function lastid_tindak_lanjut()
+    {
+        $this->db->order_by('TindakLanjutId', 'DESC');
+        $q = $this->db->get('tindak_lanjut');
+        return $q;
+    }
     function getEmptyUser()
     {
         $user['AduanId'] = NULL;

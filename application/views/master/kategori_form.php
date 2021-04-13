@@ -11,13 +11,13 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Kategori</label>
                             <div class="col-sm-6">
-                                <input name="kategori_nama" type="text" placeholder="Kategori Nama" class="form-control" value="<?= $user['kategori_nama'] ?>" />
+                                <input name="KategoriNama" type="text" placeholder="Kategori Nama" class="form-control" value="<?= $user['KategoriNama'] ?>" />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Bidang</label>
                             <div class="col-sm-6">
-                                <input name="bidang" type="text" placeholder="Bidang" class="form-control" value="<?= $user['bidang'] ?>" />
+                                <input name="KategoriBidang" type="text" placeholder="Bidang" class="form-control" value="<?= $user['KategoriBidang'] ?>" />
                             </div>
                         </div>
 

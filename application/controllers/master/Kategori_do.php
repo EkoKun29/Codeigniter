@@ -13,18 +13,18 @@ class Kategori_do extends YK_Controller
     var $rules = array(
 
         array(
-            'field' => 'kategori_id',
-            'label' => 'kategori_id',
+            'field' => 'KategoriId',
+            'label' => 'KategoriId',
             'rules' => 'trim'
         ),
         array(
-            'field' => 'kategori_nama',
-            'label' => 'kategori_nama',
+            'field' => 'KategoriNama',
+            'label' => 'KategoriNama',
             'rules' => 'required'
         ),
         array(
-            'field' => 'bidang',
-            'label' => 'bidang',
+            'field' => 'KategoriBidang',
+            'label' => 'KategoriBidang',
             'rules' => 'required'
         ),
     );
@@ -41,8 +41,8 @@ class Kategori_do extends YK_Controller
         } else {
 
             $data = array(
-                'kategori_nama' => $_POST['kategori_nama'],
-                'bidang' => $_POST['bidang'],
+                'KategoriNama' => $_POST['KategoriNama'],
+                'KategoriBidang' => $_POST['KategoriBidang'],
             );
             $result = $this->kategori_model->add($data);
             if (!$result) {
@@ -70,8 +70,8 @@ class Kategori_do extends YK_Controller
             $this->load->helper('tanggal');
 
             $data = array(
-                'kategori_nama' => $_POST['kategori_nama'],
-                'bidang' => $_POST['bidang'],
+                'KategoriNama' => $_POST['KategoriNama'],
+                'KategoriBidang' => $_POST['KategoriBidang'],
             );
             $result = $this->kategori_model->update($_POST['KecId'], $data);
             if (!$result) {

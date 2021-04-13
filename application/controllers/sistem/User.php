@@ -56,7 +56,7 @@ class User extends YK_Controller
     {
         $this->load->model('user_model');
         $this->load->model('group_model');
-        $this->load->model('unit_kerja_model');
+        // $this->load->model('unit_kerja_model');
 
         $data['user'] = $this->user_model->getById($id);
         $data['groups'] = $this->group_model->getAll();

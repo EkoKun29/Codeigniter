@@ -32,13 +32,13 @@
                             </div>
                         </div>
 
-
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">File Bukti 2 <span style="color:red">(Boleh Dikosongkan)</span></label>
                             <div class="col-sm-6">
                                 <input name="files2" type="file" placeholder="Files" class="form-control" value="<?= $user['files2'] ?>" />
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">File Bukti 3 <span style="color:red">(Boleh Dikosongkan)</span></label>
                             <div class="col-sm-6">
