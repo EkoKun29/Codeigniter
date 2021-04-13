@@ -183,7 +183,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                         <?php if ($aduanid->TindakLanjutDeskripsi != NULL) {
                                             echo $aduanid->TindakLanjutDeskripsi;
                                         } else {
-                                            echo "Tidak Ada Deskripsi Tindak Lanjut";
+                                            echo "<a class='btn btn-warning'  style='color:white'>Tambah Deskripsi</a>";
                                         }
                                         ?>
                                     <?php } else { ?>
