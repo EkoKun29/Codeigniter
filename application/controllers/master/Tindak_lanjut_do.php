@@ -42,6 +42,7 @@ class Tindak_lanjut_do extends YK_Controller
         } elseif ($mode == "selesai") {
             $data = array(
                 'TindakLanjutProses' => 'selesai',
+                'TindakLanjutTglSelesai' => date("Y-m-d H:d:s"),
             );
             $result = $this->tindak_lanjut_model->update($_POST['id'], $data);
             if (!$result) {
