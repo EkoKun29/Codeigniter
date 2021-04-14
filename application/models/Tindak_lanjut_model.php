@@ -14,7 +14,7 @@ class Tindak_lanjut_model extends Ci_Model
     // }
     function getById($id)
     {
-        $this->db->where("AduanId", $id);
+        $this->db->where("TindakLanjutId", $id);
         $query = $this->db->get('tindak_lanjut');
         return $query->row_array();
     }

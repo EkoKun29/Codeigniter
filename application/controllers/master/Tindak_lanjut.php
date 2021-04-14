@@ -69,12 +69,13 @@ class Tindak_lanjut extends YK_Controller
         $this->load_view('master/aduan_form', $data);
     }
 
-    function update($id)
+    function update()
     {
+        $id = $_POST['id'];
         $sess = $_SESSION['siltap'];
         $data['user'] = $this->tindak_lanjut_model->getById($id, $sess['nip']);
         $data['sub'] = 'update';
-        $this->load_view('master/aduan_form', $data);
+        $this->load->view('master/tindak_lanjut_edit', $data);
     }
 }
 

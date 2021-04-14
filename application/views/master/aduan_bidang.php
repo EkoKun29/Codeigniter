@@ -59,10 +59,11 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                                 <a href="<?= base_url("master/aduan/detail/" . $data->AduanId) ?>" class="btn btn-primary">
                                                     <i class="ace-icon fa fa-list bigger-120"></i>
                                                 </a>
-                                                <a href="#" onclick="tindak_lanjut(<?= $data->AduanId ?>)" class="btn btn-success">
-                                                    <i class="ace-icon fa fa-check bigger-120"></i>
-                                                </a>
-
+                                                <?php if ($data->AduanProses == "permohonan") { ?>
+                                                    <a href="#" onclick="tindak_lanjut(<?= $data->AduanId ?>)" class="btn btn-success">
+                                                        <i class="ace-icon fa fa-check bigger-120"></i>
+                                                    </a>
+                                                <?php } ?>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -161,9 +162,14 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                     <h6 class="timeline-title">Selesai</h6>
                                 </div>
                                 <div class="timeline-body">
-                                    <?php if ($aduanid->AduanProses == "diterima") { ?>
-                                        <?= $aduanid->AduanDeskripsi ?>
-                                    <?php } else { ?>
+                                    <?php if ($aduanid->AduanProses == "diterima") {
+
+                                        if ($aduanid->TindakLanjutProses == "selesai") {
+                                            echo "Sudah Selesai";
+                                        } else {
+                                            echo "Belum Selesai";
+                                        }
+                                    } else { ?>
                                         <span style="color: grey;">Belum Ada Tindak Lanjut</span>
 
                                     <?php } ?>

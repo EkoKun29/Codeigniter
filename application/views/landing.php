@@ -270,78 +270,78 @@
                         <div class="portfolio-info">
                             <h4>Layanan 1</h4>
                             <p>LAYANAN HOSTING APLIKASI DAN/ATAU DATA</p>
-                            <a href="<?= base_url('img/layanan'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 portfolio-item filter-web">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="" />
+                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
                         <div class="portfolio-info">
                             <h4>Layanan 2</h4>
                             <p>LAYANAN CLOUD SERVER</p>
-                            <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 portfolio-item filter-app">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="" />
+                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
                         <div class="portfolio-info">
                             <h4>Layanan 3</h4>
                             <p>LAYANAN CO-LOCATION</p>
-                            <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
+                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 portfolio-item filter-card">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="" />
+                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
                         <div class="portfolio-info">
                             <h4>Layanan 4</h4>
                             <p>LAYANAN DISASTER RECOVERY CENTER (DRC)</p>
-                            <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
+                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 portfolio-item filter-web">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="" />
+                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
                         <div class="portfolio-info">
                             <h4>Layanan 5</h4>
                             <p>LAYANAN PERTUKARAN DATA ELEKTRONIK</p>
-                            <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
+                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 portfolio-item filter-app">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="" />
+                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
                         <div class="portfolio-info">
                             <h4>Layanan 6</h4>
                             <p>LAYANAN DUKUNGAN INTERKONEKSI INFRASTRUKTUR</p>
-                            <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 portfolio-item filter-card">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="" />
+                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
                         <div class="portfolio-info">
                             <h4>Layanan 7</h4>
                             <p>LAYANAN PENGEMBANGAN INFRASTRUKTUR LAN UNIT PENGGUNA</p>
-                            <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
+                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 portfolio-item filter-card">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="" />
+                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
                         <div class="portfolio-info">
                             <h4>Layanan 8</h4>
                             <p>LAYANAN PEMBANGUNAN DAN PENGEMBANGAN SISTEM TIK</p>
-                            <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
                         </div>
                     </div>
 

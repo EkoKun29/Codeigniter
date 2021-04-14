@@ -31,7 +31,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                         <th>Tgl Tindak Lanjut</th>
                                         <!-- <th>Deskripsi</th> -->
                                         <th>Proses</th>
-                                        <th style="width:100px;">#</th>
+                                        <th style="width:50px;">#</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,9 +59,9 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                                 <a href="<?= base_url("master/tindak_lanjut/detail/" . $data->AduanId) ?>" class="btn btn-primary">
                                                     <i class="ace-icon fa fa-list bigger-120"></i>
                                                 </a>
-                                                <a href="<?= base_url("master/tindak_lanjut/update/update/" . $data->AduanId) ?>" class="btn btn-info">
+                                                <!-- <a href="<?= base_url("master/tindak_lanjut/update/update/" . $data->AduanId) ?>" class="btn btn-info">
                                                     <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                                </a>
+                                                </a> -->
 
                                             </td>
                                         </tr>
@@ -183,7 +183,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                         <?php if ($aduanid->TindakLanjutDeskripsi != NULL) {
                                             echo $aduanid->TindakLanjutDeskripsi;
                                         } else {
-                                            echo "<a class='btn btn-warning'  style='color:white'>Tambah Deskripsi</a>";
+                                            echo "<span style='color: grey;'>Deskripsi Kosong</span>";
                                         }
                                         ?>
                                     <?php } else { ?>
@@ -202,7 +202,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                 <div class="timeline-body">
                                     <?php if ($aduanid->AduanProses == "diterima") { ?>
                                         <?php if ($aduanid->TindakLanjutProses == "selesai") {
-                                            echo "Selesai";
+                                            echo "Sudah Selesai";
                                         } else {
                                             echo "Belum Selesai";
                                         } ?>
