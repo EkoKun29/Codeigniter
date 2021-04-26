@@ -25,7 +25,7 @@
                                     <tr>
                                         <td><?= $data->KategoriId; ?></td>
                                         <td><?= $data->KategoriNama; ?></td>
-                                        <td><?= $data->KategoriBidang; ?></td>
+                                        <td><?= $data->KategoriSeksi; ?></td>
                                         <td>
                                             <a href="<?= base_url("master/kategori/update/" . $data->KategoriId) ?>" class="btn btn-outline-info">
                                                 <i class="ace-icon fa fa-pencil bigger-120"></i>

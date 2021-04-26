@@ -17,7 +17,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Bidang</label>
                             <div class="col-sm-6">
-                                <input name="KategoriBidang" type="text" placeholder="Bidang" class="form-control" value="<?= $user['KategoriBidang'] ?>" />
+                                <input name="KategoriSeksi" type="text" placeholder="Bidang" class="form-control" value="<?= $user['KategoriSeksi'] ?>" />
                             </div>
                         </div>
 

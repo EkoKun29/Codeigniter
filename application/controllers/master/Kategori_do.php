@@ -23,8 +23,8 @@ class Kategori_do extends YK_Controller
             'rules' => 'required'
         ),
         array(
-            'field' => 'KategoriBidang',
-            'label' => 'KategoriBidang',
+            'field' => 'KategoriSeksi',
+            'label' => 'KategoriSeksi',
             'rules' => 'required'
         ),
     );
@@ -42,7 +42,7 @@ class Kategori_do extends YK_Controller
 
             $data = array(
                 'KategoriNama' => $_POST['KategoriNama'],
-                'KategoriBidang' => $_POST['KategoriBidang'],
+                'KategoriSeksi' => $_POST['KategoriSeksi'],
             );
             $result = $this->kategori_model->add($data);
             if (!$result) {
@@ -71,7 +71,7 @@ class Kategori_do extends YK_Controller
 
             $data = array(
                 'KategoriNama' => $_POST['KategoriNama'],
-                'KategoriBidang' => $_POST['KategoriBidang'],
+                'KategoriSeksi' => $_POST['KategoriSeksi'],
             );
             $result = $this->kategori_model->update($_POST['KecId'], $data);
             if (!$result) {

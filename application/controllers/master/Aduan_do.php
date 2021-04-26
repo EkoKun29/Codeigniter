@@ -53,7 +53,7 @@ class Aduan_do extends YK_Controller
                 'AduanId' => $id,
                 'AduanKategoriId' => $_POST['kategori'],
                 'NoTiket' => $tiket,
-                'AduanBidang' => $kategori->KategoriBidang,
+                'AduanSeksi' => $kategori->KategoriSeksi,
                 'AduanNipPengirim' => $_SESSION['siltap']['nip'],
                 'AduanNamaPengirim' => $_SESSION['siltap']['realname'],
                 'AduanKdLokasi' => $_SESSION['siltap']['kdlokasi'],
@@ -83,7 +83,7 @@ class Aduan_do extends YK_Controller
             $this->load->library('form_validation');
             $config = $this->rules;
             $this->form_validation->set_rules($config);
-            $this->form_validation->set_rules("KecId", "Id aduan", "required");
+            $this->form_validation->set_rules("AduanId", "Id aduan", "required");
             $this->form_validation->set_message('required', 'Field %s harus diisi.');
             $this->form_validation->set_message('is_unique', '%s sudah terdaftar.');
             $this->form_validation->set_error_delimiters('', '<br/>');
@@ -91,13 +91,15 @@ class Aduan_do extends YK_Controller
             if ($this->form_validation->run() == FALSE) {
                 echo json_encode(array('success' => false, 'msg' => validation_errors()));
             } else {
-                $this->load->helper('tanggal');
 
+                $kategori = $this->aduan_model->getKategoriId($_POST['kategori']);
+                $this->load->helper('tanggal');
                 $data = array(
-                    'AduanKategoriId' => $_POST['AduanKategoriId'],
-                    'AduanBidang' => $_POST['AduanBidang'],
+                    'AduanKategoriId' => $_POST['kategori'],
+                    'AduanSeksi' => $kategori->KategoriSeksi,
+                    'AduanDeskripsi' => $_POST['deskripsi'],
                 );
-                $result = $this->aduan_model->update($_POST['KecId'], $data);
+                $result = $this->aduan_model->update($_POST['AduanId'], $data);
                 if (!$result) {
                     $this->session->set_flashdata(array('added' => true, 'msg' => 'Data berhasil diupdate!'));
                     echo json_encode(array('success' => true, 'msg' => 'Data Berhasil Diupdate.'));
@@ -133,6 +135,34 @@ class Aduan_do extends YK_Controller
                 $this->aduan_model->add_tindak_lanjut($data_tindak_lanjut);
             } else {
                 echo json_encode(array('success' => false, 'msg' => 'User Gagal ditindak lanjut!'));
+            }
+        } else {
+            $this->load->library('form_validation');
+            $config = $this->rules;
+            $this->form_validation->set_rules($config);
+            $this->form_validation->set_rules("KecId", "Id aduan", "required");
+            $this->form_validation->set_message('required', 'Field %s harus diisi.');
+            $this->form_validation->set_message('is_unique', '%s sudah terdaftar.');
+            $this->form_validation->set_error_delimiters('', '<br/>');
+
+            if ($this->form_validation->run() == FALSE) {
+                echo json_encode(array('success' => false, 'msg' => validation_errors()));
+            } else {
+
+                $kategori = $this->aduan_model->getKategoriId($_POST['kategori']);
+                $this->load->helper('tanggal');
+                $data = array(
+                    'AduanKategoriId' => $_POST['kategori'],
+                    'AduanSeksi' => $kategori->KategoriSeksi,
+                    'AduanDeskripsi' => $_POST['deskripsi'],
+                );
+                $result = $this->aduan_model->update($_POST['AduanId'], $data);
+                if (!$result) {
+                    $this->session->set_flashdata(array('added' => true, 'msg' => 'Data berhasil diupdate!'));
+                    echo json_encode(array('success' => true, 'msg' => 'Data Berhasil Diupdate.'));
+                } else {
+                    echo json_encode(array('success' => false, 'msg' => 'Data Gagal Diupdate!'));
+                }
             }
         }
     }

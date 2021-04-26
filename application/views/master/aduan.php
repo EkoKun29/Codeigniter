@@ -28,10 +28,9 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                     <tr>
                                         <th>Tiket</th>
                                         <th>Kategori</th>
-                                        <th>Bidang</th>
                                         <th>Deskripsi</th>
                                         <th>Proses</th>
-                                        <th style="width:100px;">#</th>
+                                        <th style="width:50px;">#</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,19 +49,21 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                             } ?>>
                                             <td><?= $data->NoTiket; ?></td>
                                             <td><?= $data->KategoriNama; ?></td>
-                                            <td><?= $data->AduanBidang; ?></td>
                                             <td><?= $data->AduanDeskripsi; ?></td>
                                             <td>
                                                 <div class="badge <?= $status_proses ?> badge-fw"><?= $data->AduanProses; ?></div>
                                             </td>
                                             <td>
-                                                <a href="<?= base_url("master/aduan/detail/" . $data->AduanId) ?>" class="btn btn-primary">
-                                                    <i class="ace-icon fa fa-list bigger-120"></i>
-                                                </a>
-                                                <a href="<?= base_url("master/aduan/update/update/" . $data->AduanId) ?>" class="btn btn-info">
-                                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                                </a>
 
+                                                <?php if ($data->AduanProses == "permohonan") { ?>
+                                                    <a href="<?= base_url("master/aduan/update/" . $data->AduanId) ?>" class="btn btn-info">
+                                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                    </a>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url("master/aduan/detail/" . $data->AduanId) ?>" class="btn btn-primary">
+                                                        <i class="ace-icon fa fa-list bigger-120"></i>
+                                                    </a>
+                                                <?php } ?>
                                             </td>
                                         </tr>
                                     <?php } ?>

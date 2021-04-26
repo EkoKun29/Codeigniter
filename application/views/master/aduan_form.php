@@ -5,14 +5,16 @@
                 <div class="card-body">
                     <h4 class="card-title">Form <?= $sub == 'add' ? 'Tambah' : 'Edit' ?> Pengguna</h4>
                     <form class="forms-sample" action="<?= base_url("master/aduan_do/$sub") ?>" method="post">
-
+                        <?= $user['KategoriId'] ?>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Kategori <span style="color:red">(Harus Dipilih)</span></label>
                             <div class="col-sm-6">
                                 <!-- <input name="kategori_nama" type="text" placeholder="Kategori Nama" class="form-control" value="<?= $user['kategori_nama'] ?>" /> -->
                                 <select class="form-control" name="kategori">
                                     <?php foreach ($kategori as $data) { ?>
-                                        <option value="<?= $data->KategoriId ?>"><?= $data->KategoriNama ?></option>
+                                        <option value="<?= $data->KategoriId ?>" <?php if ($user['AduanKategoriId'] == $data->KategoriId) {
+                                                                                        echo "selected";
+                                                                                    } ?>><?= $data->KategoriNama ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -21,7 +23,7 @@
                             <label class="col-sm-3 col-form-label">Deskripsi <span style="color:red">(Harus Diisi)</span></label>
                             <div class="col-sm-6">
                                 <!-- <input name="bidang" type="text" placeholder="Bidang" class="form-control" value="<?= $user['deskripsi'] ?>" /> -->
-                                <textarea name="deskripsi" class="form-control" rows="3"></textarea>
+                                <textarea name="deskripsi" class="form-control" rows="3"><?= $user['AduanDeskripsi'] ?></textarea>
                             </div>
                         </div>
 

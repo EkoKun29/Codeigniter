@@ -24,12 +24,12 @@ class Aduan_model extends Ci_Model
         $this->db->select('*');
         $this->db->from('aduan a');
         $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
-        $this->db->join('tindak_lanjut c', 'c.TindakLanjutAduanId = a.AduanId');
+        // $this->db->join('tindak_lanjut c', 'c.TindakLanjutAduanId = a.AduanId');
         $this->db->where('a.AduanNipPengirim', $nip);
         $query = $this->db->get();
         return $query->result();
     }
-    function getAllByBidang($bid)
+    function getAllByBidang($seksi)
     {
         // $user = $this->db->query('SELECT * FROM ');
         $this->db->select('*');
@@ -37,7 +37,7 @@ class Aduan_model extends Ci_Model
         $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
         $this->db->join('_lokasi c', 'c.kdlokasi = a.AduanKdLokasi');
         $this->db->join('tindak_lanjut d', 'd.TindakLanjutAduanId = a.AduanId');
-        $this->db->where('a.AduanBidang', $bid);
+        $this->db->where('a.AduanSeksi', $seksi);
         $query = $this->db->get();
         return $query->result();
     }
@@ -128,6 +128,14 @@ class Aduan_model extends Ci_Model
         $this->db->order_by('AduanId', 'desc');
         $q = $this->db->get('aduan');
         return $q;
+    }
+
+
+    function cekAdmBidang($kdlokasi)
+    {
+        $this->db->where('KategoriSeksi', $kdlokasi);
+        $q = $this->db->get('ref_kategori');
+        return $q->num_rows();
     }
 }
 
