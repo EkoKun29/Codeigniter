@@ -29,15 +29,16 @@ class Aduan_model extends Ci_Model
         $query = $this->db->get();
         return $query->result();
     }
-    function getAllByBidang($seksi)
+    function getAllByBidang($kategori)
     {
         // $user = $this->db->query('SELECT * FROM ');
+
         $this->db->select('*');
         $this->db->from('aduan a');
         $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
         $this->db->join('_lokasi c', 'c.kdlokasi = a.AduanKdLokasi');
-        $this->db->join('tindak_lanjut d', 'd.TindakLanjutAduanId = a.AduanId');
-        $this->db->where('a.AduanSeksi', $seksi);
+        // $this->db->join('tindak_lanjut d', 'd.TindakLanjutAduanId = a.AduanId');
+        $this->db->where('a.AduanKategoriId', $kategori);
         $query = $this->db->get();
         return $query->result();
     }
@@ -57,7 +58,7 @@ class Aduan_model extends Ci_Model
         $this->db->select('*');
         $this->db->from('aduan a');
         $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
-        $this->db->join('tindak_lanjut c', 'c.TindakLanjutAduanId = a.AduanId');
+        // $this->db->join('tindak_lanjut c', 'c.TindakLanjutAduanId = a.AduanId');
         $this->db->where('a.AduanId', $aduanid);
         // $this->db->where('a.AduanNipPengirim', $nip);
         $query = $this->db->get();
@@ -135,7 +136,7 @@ class Aduan_model extends Ci_Model
     {
         $this->db->where('KategoriSeksi', $kdlokasi);
         $q = $this->db->get('ref_kategori');
-        return $q->num_rows();
+        return $q;
     }
 }
 

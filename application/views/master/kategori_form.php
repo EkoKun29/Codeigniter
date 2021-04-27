@@ -24,7 +24,7 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label"></label>
                             <div class="col-sm-6">
-                                <input type="hidden" name="KecId" value="<?= $user['kategori_id'] ?>" />
+                                <input type="hidden" name="KategoriId" value="<?= $user['KategoriId'] ?>" />
                                 <button type="reset" class="btn btn-light"><i class="fa fa-refresh"></i> Reset</button>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
                                 <button type="button" class="btn btn-warning" onclick="self.history.back()"><i class="fa fa-undo"></i> Kembali</button>

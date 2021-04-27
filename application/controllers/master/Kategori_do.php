@@ -59,7 +59,7 @@ class Kategori_do extends YK_Controller
         $this->load->library('form_validation');
         $config = $this->rules;
         $this->form_validation->set_rules($config);
-        $this->form_validation->set_rules("KecId", "Id kategori", "required");
+        $this->form_validation->set_rules("KategoriId", "Id kategori", "required");
         $this->form_validation->set_message('required', 'Field %s harus diisi.');
         $this->form_validation->set_message('is_unique', '%s sudah terdaftar.');
         $this->form_validation->set_error_delimiters('', '<br/>');
@@ -73,7 +73,7 @@ class Kategori_do extends YK_Controller
                 'KategoriNama' => $_POST['KategoriNama'],
                 'KategoriSeksi' => $_POST['KategoriSeksi'],
             );
-            $result = $this->kategori_model->update($_POST['KecId'], $data);
+            $result = $this->kategori_model->update($_POST['KategoriId'], $data);
             if (!$result) {
                 $this->session->set_flashdata(array('added' => true, 'msg' => 'Data berhasil diupdate!'));
                 echo json_encode(array('success' => true, 'msg' => 'Data Berhasil Diupdate.'));

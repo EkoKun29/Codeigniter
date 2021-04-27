@@ -78,33 +78,40 @@ class Aduan_do extends YK_Controller
     function update($mode)
     {
         if ($mode == "update") {
-
-
-            $this->load->library('form_validation');
-            $config = $this->rules;
-            $this->form_validation->set_rules($config);
-            $this->form_validation->set_rules("AduanId", "Id aduan", "required");
-            $this->form_validation->set_message('required', 'Field %s harus diisi.');
-            $this->form_validation->set_message('is_unique', '%s sudah terdaftar.');
-            $this->form_validation->set_error_delimiters('', '<br/>');
-
-            if ($this->form_validation->run() == FALSE) {
-                echo json_encode(array('success' => false, 'msg' => validation_errors()));
-            } else {
-
-                $kategori = $this->aduan_model->getKategoriId($_POST['kategori']);
-                $this->load->helper('tanggal');
+            $status = !empty($_POST['status']) ? $_POST['status'] : "";
+            if ($status == "EditTolak") {
                 $data = array(
-                    'AduanKategoriId' => $_POST['kategori'],
-                    'AduanSeksi' => $kategori->KategoriSeksi,
-                    'AduanDeskripsi' => $_POST['deskripsi'],
+                    'AduanTolakDeskripsi' => $_POST['AduanTolakDeskripsi'],
                 );
-                $result = $this->aduan_model->update($_POST['AduanId'], $data);
-                if (!$result) {
-                    $this->session->set_flashdata(array('added' => true, 'msg' => 'Data berhasil diupdate!'));
-                    echo json_encode(array('success' => true, 'msg' => 'Data Berhasil Diupdate.'));
+                $this->aduan_model->update($_POST['AduanId'], $data);
+                redirect(base_url('master/aduan/detail/' . $_POST['AduanId']));
+            } else {
+                $this->load->library('form_validation');
+                $config = $this->rules;
+                $this->form_validation->set_rules($config);
+                $this->form_validation->set_rules("AduanId", "Id aduan", "required");
+                $this->form_validation->set_message('required', 'Field %s harus diisi.');
+                $this->form_validation->set_message('is_unique', '%s sudah terdaftar.');
+                $this->form_validation->set_error_delimiters('', '<br/>');
+
+                if ($this->form_validation->run() == FALSE) {
+                    echo json_encode(array('success' => false, 'msg' => validation_errors()));
                 } else {
-                    echo json_encode(array('success' => false, 'msg' => 'Data Gagal Diupdate!'));
+
+                    $kategori = $this->aduan_model->getKategoriId($_POST['kategori']);
+                    $this->load->helper('tanggal');
+                    $data = array(
+                        'AduanKategoriId' => $_POST['kategori'],
+                        'AduanSeksi' => $kategori->KategoriSeksi,
+                        'AduanDeskripsi' => $_POST['deskripsi'],
+                    );
+                    $result = $this->aduan_model->update($_POST['AduanId'], $data);
+                    if (!$result) {
+                        $this->session->set_flashdata(array('added' => true, 'msg' => 'Data berhasil diupdate!'));
+                        echo json_encode(array('success' => true, 'msg' => 'Data Berhasil Diupdate.'));
+                    } else {
+                        echo json_encode(array('success' => false, 'msg' => 'Data Gagal Diupdate!'));
+                    }
                 }
             }
         } else if ($mode == "tindak_lanjut") {
@@ -135,6 +142,19 @@ class Aduan_do extends YK_Controller
                 $this->aduan_model->add_tindak_lanjut($data_tindak_lanjut);
             } else {
                 echo json_encode(array('success' => false, 'msg' => 'User Gagal ditindak lanjut!'));
+            }
+        } else if ($mode == "tolak_aduan") {
+            $data = array(
+                'AduanProses' => "ditolak",
+                'AduanTglVerifikasi' => date("Y-m-d H:d:s"),
+            );
+            $result = $this->aduan_model->tindak_lanjut($_POST['id'], $data);
+
+
+            if (!$result) {
+                echo json_encode(array('success' => true, 'msg' => 'User berhasil ditolak!'));
+            } else {
+                echo json_encode(array('success' => false, 'msg' => 'User Gagal ditolak!'));
             }
         } else {
             $this->load->library('form_validation');

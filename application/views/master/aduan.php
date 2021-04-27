@@ -29,7 +29,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                         <th>Tiket</th>
                                         <th>Kategori</th>
                                         <th>Deskripsi</th>
-                                        <th>Proses</th>
+                                        <th>Status</th>
                                         <th style="width:50px;">#</th>
                                     </tr>
                                 </thead>
@@ -143,19 +143,27 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                             <div class="timeline-badge"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h6 class="timeline-title">Tindak Lanjut</h6>
+                                    <?php if ($aduanid->AduanProses != "ditolak") { ?>
+                                        <h6 class="timeline-title">Tindak Lanjut</h6>
+                                    <?php } else { ?>
+                                        <h6 class="timeline-title">Ditolak</h6>
+                                    <?php } ?>
                                 </div>
                                 <div class="timeline-body">
                                     <?php if ($aduanid->AduanProses == "diterima") { ?>
-                                        <?= $aduanid->TindakLanjutDeskripsi ?>
-                                    <?php } else { ?>
+                                        <!-- <?= $aduanid->TindakLanjutDeskripsi ?> -->
+                                        <a class="btn btn-success" href="<?= base_url('master/tindak_lanjut/detail/' . $aduanid->AduanId); ?>">Lihat Tindak Lanjut</a>
+                                    <?php } elseif ($aduanid->AduanProses == "permohonan") { ?>
                                         <span style="color: grey;">Belum Ada Tindak Lanjut</span>
+                                    <?php } else { ?>
+                                        <span style="color: grey;"> <?= $aduanid->AduanTolakDeskripsi ?></span>
+
 
                                     <?php } ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="timeline-wrapper timeline-wrapper-success">
+                        <!-- <div class="timeline-wrapper timeline-wrapper-success">
                             <div class="timeline-badge"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
@@ -175,7 +183,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                     <?php } ?>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 </div>

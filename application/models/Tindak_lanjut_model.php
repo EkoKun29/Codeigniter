@@ -28,14 +28,16 @@ class Tindak_lanjut_model extends Ci_Model
         $query = $this->db->get();
         return $query->result();
     }
-    function getAllByBidang($bid)
+    function getAllByBidang($kategori)
     {
         // $user = $this->db->query('SELECT * FROM ');
+
         $this->db->select('*');
-        $this->db->from('tindak_lanjut a');
-        $this->db->join('aduan b', 'b.AduanId = a.TindakLanjutAduanId');
-        $this->db->join('_lokasi c', 'c.kdlokasi = b.AduanKdLokasi');
-        $this->db->where('b.AduanBidang', $bid);
+        $this->db->from('aduan a');
+        $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
+        $this->db->join('_lokasi c', 'c.kdlokasi = a.AduanKdLokasi');
+        $this->db->join('tindak_lanjut d', 'd.TindakLanjutAduanId = a.AduanId');
+        $this->db->where('a.AduanKategoriId', $kategori);
         $query = $this->db->get();
         return $query->result();
     }
@@ -61,14 +63,6 @@ class Tindak_lanjut_model extends Ci_Model
 
         return $query->row();
     }
-
-    // function getTindakLanjut($aduanid)
-    // {
-    //     $this->db->where('TindakLanjutId');
-    //     $q = $this->db->get('tindak_lanjut');
-    //     return $q;
-    // }
-
     function add($data)
     {
         $this->db->insert('tindak_lanjut', $data);
@@ -85,22 +79,7 @@ class Tindak_lanjut_model extends Ci_Model
         $this->db->where('TindakLanjutId', $id);
         $this->db->delete('tindak_lanjut');
     }
-    // function tindak_lanjut($id, $data)
-    // {
-    //     $this->db->where('TindakLanjutId', $id);
-    //     $this->db->update('tindak_lanjut', $data);
-    // }
-    // function add_tindak_lanjut($data)
-    // {
-    //     $this->db->insert('tindak_lanjut', $data);
-    // }
 
-    // function lastid_tindak_lanjut()
-    // {
-    //     $this->db->order_by('TindakLanjutId', 'DESC');
-    //     $q = $this->db->get('tindak_lanjut');
-    //     return $q;
-    // }
     function getEmptyUser()
     {
         $user['AduanId'] = NULL;
@@ -108,24 +87,11 @@ class Tindak_lanjut_model extends Ci_Model
         $user['AduanBidang'] = NULL;
         return $user;
     }
-    // function getKategori()
-    // {
-    //     $q = $this->db->get('ref_kategori');
-    //     return $q->result();
-    // }
-    // function getKategoriId($kategoriid)
-    // {
-    //     $this->db->where('KategoriId', $kategoriid);
-    //     $q = $this->db->get('ref_kategori');
-    //     return $q->row();
-    // }
-    // function lastid()
-    // {
-    //     $this->db->order_by('AduanId', 'desc');
-    //     $q = $this->db->get('aduan');
-    //     return $q;
-    // }
-}
 
-/* End of file user_model.php */
-/* Location: ./application/models/user_model.php */
+    function cekAdmBidang($kdlokasi)
+    {
+        $this->db->where('KategoriSeksi', $kdlokasi);
+        $q = $this->db->get('ref_kategori');
+        return $q;
+    }
+}

@@ -11,51 +11,44 @@ class Tindak_lanjut extends YK_Controller
     public function index()
     {
         $sess = $_SESSION['siltap'];
-        if ($sess['groupid'] == 7) {
-            $bid = "TIK";
-        } elseif ($sess['groupid'] == 8) {
-            $bid = "IKP";
-        } elseif ($sess['groupid'] == 9) {
-            $bid = "PERSANDIAN";
-        } else {
-            $bid = "TIK";
-        }
+        $kdlokasi = !empty($sess['kdlokasi']) ? $sess['kdlokasi'] : "";
+        $cek_adm_bidang = $this->tindak_lanjut_model->cekAdmBidang($kdlokasi);
 
         if ($sess['groupid'] == 1) {
             $data['aduan'] = $this->tindak_lanjut_model->getAllByAdmin();
             $this->load_view('master/tindak_lanjut_bidang', $data);
-        } elseif ($sess['groupid'] < 10 and $sess['groupid'] > 6) {
-            $data['aduan'] = $this->tindak_lanjut_model->getAllByBidang($bid);
-            $this->load_view('master/tindak_lanjut_bidang', $data);
         } else {
-            $data['aduan'] = $this->tindak_lanjut_model->getAll($sess['nip']);
-            $this->load_view('master/tindak_lanjut', $data);
+            if ($cek_adm_bidang->num_rows() == 1) {
+                $data['aduan'] = $this->tindak_lanjut_model->getAllByBidang($cek_adm_bidang->row()->KategoriId);
+                $this->load_view('master/tindak_lanjut_bidang', $data);
+            } else {
+                $data['aduan'] = $this->tindak_lanjut_model->getAll($sess['nip']);
+                $this->load_view('master/tindak_lanjut', $data);
+            }
         }
     }
     function detail($aduan_id)
     {
         $sess = $_SESSION['siltap'];
-        if ($sess['groupid'] == 7) {
-            $bid = "TIK";
-        } elseif ($sess['groupid'] == 8) {
-            $bid = "IKP";
-        } elseif ($sess['groupid'] == 9) {
-            $bid = "PERSANDIAN";
-        } else {
-            $bid = "TIK";
-        }
+        $kdlokasi = !empty($sess['kdlokasi']) ? $sess['kdlokasi'] : "";
+        $cek_adm_bidang = $this->tindak_lanjut_model->cekAdmBidang($kdlokasi);
+
+
+
         if ($sess['groupid'] == 1) {
             $data['aduan'] = $this->tindak_lanjut_model->getAllByAdmin();
             $data['aduanid'] = $this->tindak_lanjut_model->getId($aduan_id);
             $this->load_view('master/tindak_lanjut_bidang', $data);
-        } elseif ($sess['groupid'] < 10 and $sess['groupid'] > 6) {
-            $data['aduan'] = $this->tindak_lanjut_model->getAllByBidang($bid);
-            $data['aduanid'] = $this->tindak_lanjut_model->getId($aduan_id);
-            $this->load_view('master/tindak_lanjut_bidang', $data);
         } else {
-            $data['aduan'] = $this->tindak_lanjut_model->getAll($sess['nip']);
-            $data['aduanid'] = $this->tindak_lanjut_model->getId($aduan_id);
-            $this->load_view('master/tindak_lanjut', $data);
+            if ($cek_adm_bidang->num_rows() == 1) {
+                $data['aduan'] = $this->tindak_lanjut_model->getAllByBidang($cek_adm_bidang->row()->KategoriId);
+                $data['aduanid'] = $this->tindak_lanjut_model->getId($aduan_id);
+                $this->load_view('master/tindak_lanjut_bidang', $data);
+            } else {
+                $data['aduan'] = $this->tindak_lanjut_model->getAll($sess['nip']);
+                $data['aduanid'] = $this->tindak_lanjut_model->getId($aduan_id);
+                $this->load_view('master/tindak_lanjut', $data);
+            }
         }
     }
 

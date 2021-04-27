@@ -9,6 +9,26 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
     // }
 }
 ?>
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Deskripsi Aduan di Tolak</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 <div class="content-wrapper">
     <div class="row">
         <div class="col-lg-6 grid-margin stretch-card">
@@ -30,7 +50,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                         <th>Pengirim</th>
                                         <!-- <th>Kategori</th> -->
                                         <th>Jabatan</th>
-                                        <th>Proses</th>
+                                        <th>Status</th>
                                         <th style="width:100px;">#</th>
                                     </tr>
                                 </thead>
@@ -55,14 +75,21 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                             <td>
                                                 <div class="badge <?= $status_proses ?> badge-fw"><?= $data->AduanProses; ?></div>
                                             </td>
-                                            <td>
-                                                <a href="<?= base_url("master/aduan/detail/" . $data->AduanId) ?>" class="btn btn-primary">
-                                                    <i class="ace-icon fa fa-list bigger-120"></i>
-                                                </a>
-                                                <?php if ($data->AduanProses == "permohonan") { ?>
+                                            <td><?php if ($data->AduanProses == "permohonan") { ?>
+
                                                     <a href="#" onclick="tindak_lanjut(<?= $data->AduanId ?>)" class="btn btn-success">
                                                         <i class="ace-icon fa fa-check bigger-120"></i>
                                                     </a>
+                                                    <a href="#" onclick="tolak_aduan(<?= $data->AduanId ?>)" class="btn btn-danger">
+                                                        <i class="ace-icon fa fa-close bigger-120"></i>
+                                                    </a>
+                                                    <a href="<?= base_url("master/aduan/update/" . $data->AduanId) ?>" class="btn btn-info">
+                                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                    </a>
+                                                <?php } else { ?><a href="<?= base_url("master/aduan/detail/" . $data->AduanId) ?>" class="btn btn-primary">
+                                                        <i class="ace-icon fa fa-list bigger-120"></i>
+                                                    </a>
+
                                                 <?php } ?>
                                             </td>
                                         </tr>
@@ -143,23 +170,35 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                             <div class="timeline-badge"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h6 class="timeline-title">Tindak Lanjut</h6>
+                                    <?php if ($aduanid->AduanProses != "ditolak") { ?>
+                                        <h6 class="timeline-title">Tindak Lanjut</h6>
+                                    <?php } else { ?>
+                                        <h6 class="timeline-title">Ditolak</h6>
+                                    <?php } ?>
                                 </div>
                                 <div class="timeline-body">
                                     <?php if ($aduanid->AduanProses == "diterima") { ?>
-                                        <?= $aduanid->AduanDeskripsi ?>
-                                    <?php } else { ?>
+                                        <!-- <?= $aduanid->TindakLanjutDeskripsi ?> -->
+                                        <span style="color: grey;">Sudah di Tindak Lanjut</span>
+                                        <a class="btn btn-success" href="<?= base_url('master/tindak_lanjut/detail/' . $aduanid->AduanId); ?>">Lihat Tindak Lanjut</a>
+                                    <?php } elseif ($aduanid->AduanProses == "permohonan") { ?>
                                         <span style="color: grey;">Belum Ada Tindak Lanjut</span>
 
+                                    <?php } elseif ($aduanid->AduanProses == "ditolak") { ?>
+
+                                        <span style="color: grey;"> <?= $aduanid->AduanTolakDeskripsi ?></span>
+                                        <a href="#" class="btn btn-success create-tolak" data-id="<?= $aduanid->AduanId; ?>">
+                                            <i class="fa fa-plus"></i> Edit Deskripsi
+                                        </a>
                                     <?php } ?>
                                 </div>
                             </div>
                         </div>
-                        <div class="timeline-wrapper timeline-wrapper-success">
+                        <!-- <div class="timeline-wrapper timeline-wrapper-success">
                             <div class="timeline-badge"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h6 class="timeline-title">Selesai</h6>
+                                    <h6 class="timeline-title">Tindak Lanjut</h6>
                                 </div>
                                 <div class="timeline-body">
                                     <?php if ($aduanid->AduanProses == "diterima") {
@@ -175,7 +214,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                     <?php } ?>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 </div>
@@ -248,4 +287,61 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
             }
         });
     }
+
+
+    function tolak_aduan(id) {
+        bootbox.confirm({
+            message: "Apakah anda yakin akan menolak permohonan ini?",
+            buttons: {
+                cancel: {
+                    label: '<i class="fa fa-times"></i> Batal',
+                    className: "btn-danger btn-sm"
+                },
+                confirm: {
+                    label: '<i class="fa fa-check"></i> Yakin',
+                    className: "btn-primary btn-sm"
+                }
+            },
+            callback: function(result) {
+                if (result) {
+                    $.post(
+                        '<?= base_url("master/aduan_do/update/tolak_aduan") ?>', {
+                            id: id
+                        },
+                        function(data) {
+                            if (data.success) {
+                                $.gritter.add({
+                                    title: 'Informasi',
+                                    text: 'Data berhasil ditolak.',
+                                    class_name: 'gritter-info gritter-center'
+                                });
+                                $("#data-table").tabel({
+                                    reload: true
+                                });
+                                setTimeout(function() {
+                                    window.location.reload();
+                                }, 1000);
+                            } else {
+                                bootbox.alert(data.msg);
+                            }
+                        }, "json"
+                    );
+                }
+            }
+        });
+    }
+
+    $(function() {
+        $(document).on('click', '.create-tolak', function(e) {
+            e.preventDefault();
+            $("#myModal").modal('show');
+            $.post('<?php echo base_url('master/aduan/search'); ?>', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $(".modal-body").html(html);
+                }
+            );
+        });
+    });
 </script>

@@ -11,14 +11,15 @@ class Aduan extends YK_Controller
     public function index()
     {
         $sess = $_SESSION['siltap'];
-        $cek_adm_bidang = $this->aduan_model->cekAdmBidang($sess['kdlokasi']);
+        $kdlokasi = !empty($sess['kdlokasi']) ? $sess['kdlokasi'] : "";
+        $cek_adm_bidang = $this->aduan_model->cekAdmBidang($kdlokasi);
 
         if ($sess['groupid'] == 1) {
             $data['aduan'] = $this->aduan_model->getAllByAdmin();
             $this->load_view('master/aduan_bidang', $data);
         } else {
-            if ($cek_adm_bidang == 1) {
-                $data['aduan'] = $this->aduan_model->getAllByBidang($sess['kdlokasi']);
+            if ($cek_adm_bidang->num_rows() == 1) {
+                $data['aduan'] = $this->aduan_model->getAllByBidang($cek_adm_bidang->row()->KategoriId);
                 $this->load_view('master/aduan_bidang', $data);
             } else {
                 $data['aduan'] = $this->aduan_model->getAll($sess['nip']);
@@ -29,7 +30,8 @@ class Aduan extends YK_Controller
     function detail($aduan_id)
     {
         $sess = $_SESSION['siltap'];
-        $cek_adm_bidang = $this->aduan_model->cekAdmBidang($sess['kdlokasi']);
+        $kdlokasi = !empty($sess['kdlokasi']) ? $sess['kdlokasi'] : "";
+        $cek_adm_bidang = $this->aduan_model->cekAdmBidang($kdlokasi);
 
         if ($sess['groupid'] == 1) {
             $data['aduan'] = $this->aduan_model->getAllByAdmin();
@@ -37,8 +39,8 @@ class Aduan extends YK_Controller
             $data['tindak_lanjut'] = $this->aduan_model->getTindakLanjut($aduan_id);
             $this->load_view('master/aduan_bidang', $data);
         } else {
-            if ($cek_adm_bidang == 1) {
-                $data['aduan'] = $this->aduan_model->getAllByBidang($sess['kdlokasi']);
+            if ($cek_adm_bidang->num_rows() == 1) {
+                $data['aduan'] = $this->aduan_model->getAllByBidang($cek_adm_bidang->row()->KategoriId);
                 $data['aduanid'] = $this->aduan_model->getId($aduan_id);
                 $data['tindak_lanjut'] = $this->aduan_model->getTindakLanjut($aduan_id);
                 $this->load_view('master/aduan_bidang', $data);
@@ -68,6 +70,14 @@ class Aduan extends YK_Controller
         $data['kategori'] = $this->aduan_model->getKategori();
         $data['sub'] = 'update/update';
         $this->load_view('master/aduan_form', $data);
+    }
+    function search()
+    {
+        $sess = $_SESSION['siltap'];
+        // $data['user'] = $this->aduan_model->getById($id);
+        // $data['kategori'] = $this->aduan_model->getKategori();
+        $data['sub'] = 'update/update';
+        $this->load->view('master/aduan_tolak_edit', $data);
     }
 }
 
