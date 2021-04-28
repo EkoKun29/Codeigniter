@@ -49,6 +49,8 @@ class Aduan_do extends YK_Controller
             }
             $kategori = $this->aduan_model->getKategoriId($_POST['kategori']);
 
+
+            $upload = $this->aduan_model->upload_aduan();
             $data = array(
                 'AduanId' => $id,
                 'AduanKategoriId' => $_POST['kategori'],
@@ -61,10 +63,24 @@ class Aduan_do extends YK_Controller
                 'AduanDeskripsi' => $_POST['deskripsi'],
                 'AduanProses' => "permohonan",
                 'AduanTglPermohonan' => date('Y-m-d H:m:s'),
-                'AduanFiles1' => $_POST['files1'],
-                'AduanFiles2' => $_POST['files2'],
-                'AduanFiles3' => $_POST['files3'],
+                'AduanFiles1' => $_FILES['file1']['name'],
+                // 'AduanFiles2' => $_FILES['file2']['name'],
+                // 'AduanFiles3' => $_FILES['file3']['name'],
             );
+
+
+
+            if ($upload['result'] == "success") { // Jika proses upload sukses
+                // Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
+                // $this->aduan_model->save($upload);
+                echo "berhasil";
+                // redirect('gambar'); // Redirect kembali ke halaman awal / halaman view data
+            } else { // Jika proses upload gagal
+                // $data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
+
+                echo "error";
+            }
+
             $result = $this->aduan_model->add($data);
             if (!$result) {
                 $this->session->set_flashdata(array('added' => true, 'msg' => 'Data baru berhasil ditambahkan!'));

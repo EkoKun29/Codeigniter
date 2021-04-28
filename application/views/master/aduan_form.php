@@ -1,3 +1,34 @@
+<link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css' type='text/css' rel='stylesheet'>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
+<style>
+    .content {
+        width: 50%;
+        padding: 5px;
+        margin: 0 auto;
+    }
+
+    .content span {
+        width: 250px;
+    }
+
+    .dz-message {
+        text-align: center;
+        font-size: 28px;
+    }
+
+    .dropzone {
+        width: 250px;
+        height: 100px;
+        color: white;
+    }
+</style>
+<script>
+    // Add restrictions
+    Dropzone.options.fileupload = {
+        acceptedFiles: 'image/*',
+        maxFilesize: 1 // MB
+    };
+</script>
 <div class="content-wrapper">
     <div class="row">
         <div class="col-md-12 grid-margin stretch-card">
@@ -23,28 +54,28 @@
                             <label class="col-sm-3 col-form-label">Deskripsi <span style="color:red">(Harus Diisi)</span></label>
                             <div class="col-sm-6">
                                 <!-- <input name="bidang" type="text" placeholder="Bidang" class="form-control" value="<?= $user['deskripsi'] ?>" /> -->
-                                <textarea name="deskripsi" class="form-control" rows="3"><?= $user['AduanDeskripsi'] ?></textarea>
+                                <textarea name="deskripsi" class="form-control" rows="5"><?= $user['AduanDeskripsi'] ?></textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">File Bukti 1 <span style="color:red">(Boleh Dikosongkan)</span></label>
                             <div class="col-sm-6">
-                                <input name="files1" type="file" placeholder="Files" class="form-control" value="<?= $user['files1'] ?>" />
+                                <input name="file1" type="file" placeholder="Files" class="form-control" value="<?= $user['files1'] ?>" />
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">File Bukti 2 <span style="color:red">(Boleh Dikosongkan)</span></label>
                             <div class="col-sm-6">
-                                <input name="files2" type="file" placeholder="Files" class="form-control" value="<?= $user['files2'] ?>" />
+                                <input name="file2" type="file" placeholder="Files" class="form-control" value="<?= $user['files2'] ?>" />
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">File Bukti 3 <span style="color:red">(Boleh Dikosongkan)</span></label>
                             <div class="col-sm-6">
-                                <input name="files3" type="file" placeholder="Files" class="form-control" value="<?= $user['files3'] ?>" />
+                                <input name="file3" type="file" placeholder="Files" class="form-control" value="<?= $user['files3'] ?>" />
                             </div>
                         </div>
 

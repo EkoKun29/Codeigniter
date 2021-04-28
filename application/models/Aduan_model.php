@@ -138,6 +138,40 @@ class Aduan_model extends Ci_Model
         $q = $this->db->get('ref_kategori');
         return $q;
     }
+
+    public function upload_aduan()
+    {
+        $config['upload_path'] = 'files/';
+        $config['allowed_types'] = 'doc|docx|pdf|xls|xlsx';
+        $config['max_size']  = '2048';
+        $config['remove_space'] = TRUE;
+
+        $this->load->library('upload', $config); // Load konfigurasi uploadnya
+        if ($this->upload->do_upload('file1')) { // Lakukan upload dan Cek jika proses upload berhasil
+            // Jika berhasil :
+            $return = array(
+                'result' => 'success', 'file' => $this->upload->data(), 'error' => ''
+            );
+            return $return;
+        } else {
+            // Jika gagal :
+            $return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
+            return $return;
+        }
+    }
+
+    // Fungsi untuk menyimpan data ke database
+    // public function save($upload)
+    // {
+    //     $data = array(
+    //         'deskripsi' => $this->input->post('input_deskripsi'),
+    //         'nama_file' => $upload['file']['file_name'],
+    //         'ukuran_file' => $upload['file']['file_size'],
+    //         'tipe_file' => $upload['file']['file_type']
+    //     );
+
+    //     $this->db->insert('gambar', $data);
+    // }
 }
 
 /* End of file user_model.php */
