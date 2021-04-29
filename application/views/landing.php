@@ -145,19 +145,19 @@
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
                             <div class="icon"><i class="bi bi-briefcase"></i></div>
                             <h4 class="title"><a href="">Layanan Backup</a></h4>
-                            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+                            <p class="description">Ada banyak manfaat ketika Anda menggunakan layanan cloud storage sebagai tempat menyimpan file. Satu alasan utama dari banyak pengguna cloud storage adalah sebagai tempat yang aman untuk pencadangan (backup) file penting. Pertimbangannya adalah bila Anda menyimpan di hard drive, external hard drive atau flash drive, kapasitas drive akan cepat penuh, juga untuk mengantisipasi bila drive tersebut rusak, dicuri atau terbakar.</p>
                         </div>
 
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
                             <div class="icon"><i class="bi bi-card-checklist"></i></div>
-                            <h4 class="title"><a href="">Layanan Hosting Update Profil</a></h4>
-                            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                            <h4 class="title"><a href="">Layanan Jaringan Internet dan Komunikasi</a></h4>
+                            <p class="description">Dalam jaringan komputer, layanan jaringan adalah aplikasi yang berjalan pada lapisan aplikasi jaringan ke atas, yang menyediakan penyimpanan data, manipulasi, presentasi, komunikasi atau kemampuan lain yang sering diimplementasikan menggunakan arsitektur client-server atau peer-to-peer berdasarkan protokol jaringan lapisan aplikasi . </p>
                         </div>
 
                         <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
                             <div class="icon"><i class="bi bi-binoculars"></i></div>
                             <h4 class="title"><a href="">Layanan Hosting Aplikasi dan/atau Data Production</a></h4>
-                            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                            <p class="description">Web hosting adalah layanan online untuk mengonlinekan website atau aplikasi web di internet. Ketika Anda membeli dan mendaftar di suatu layanan hosting, pada dasarnya Anda sedang meminjam space di server, tempat menyimpan semua file dan data yang dibutuhkan oleh website agar dapat bekeja sepenuhnya.</p>
                         </div>
 
                     </div>
@@ -265,204 +265,23 @@
                 </div> -->
 
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+<?php 
+$no = 1;
+foreach($kategori as $row){
+    ?>
                     <div class="col-lg-3 col-md-4 portfolio-item filter-app">
                         <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
                         <div class="portfolio-info">
-                            <h4>Layanan 1</h4>
-                            <p>LAYANAN HOSTING APLIKASI DAN/ATAU DATA</p>
-                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+                            <h4>Layanan <?= $no++?></h4>
+                            <p><?= $row->KategoriNama; ?></p>
+                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="<?= $row->KategoriNama?>"><i class="bx bx-plus"></i></a>
                             <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-web">
-                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 2</h4>
-                            <p>LAYANAN CLOUD SERVER</p>
-                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-app">
-                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 3</h4>
-                            <p>LAYANAN CO-LOCATION</p>
-                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
-                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 4</h4>
-                            <p>LAYANAN DISASTER RECOVERY CENTER (DRC)</p>
-                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-web">
-                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 5</h4>
-                            <p>LAYANAN PERTUKARAN DATA ELEKTRONIK</p>
-                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-app">
-                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 6</h4>
-                            <p>LAYANAN DUKUNGAN INTERKONEKSI INFRASTRUKTUR</p>
-                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
-                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 7</h4>
-                            <p>LAYANAN PENGEMBANGAN INFRASTRUKTUR LAN UNIT PENGGUNA</p>
-                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
-                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 8</h4>
-                            <p>LAYANAN PEMBANGUNAN DAN PENGEMBANGAN SISTEM TIK</p>
-                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
-                        </div>
-                    </div>
-
-                    <!-- <div class="col-lg-3 col-md-4 portfolio-item filter-app">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 9</h4>
-                            <p>LAYANAN UJI KELAYAKAN SISTEM</p>
-                            <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-web">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 10</h4>
-                            <p>LAYANAN KONEKSI INTERNET</p>
-                            <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-app">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 11</h4>
-                            <p>LAYANAN SURAT ELEKTRONIK</p>
-                            <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 12</h4>
-                            <p>LAYANAN AKUN APLIKASI DAN SHARING FOLDER</p>
-                            <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-web">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 13</h4>
-                            <p>LAYANAN INSTALASI DAN KONFIGURASI DESKTOP/NOTEBOOK</p>
-                            <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-app">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 14</h4>
-                            <p>LAYANAN PENGGUNAAN PERANGKAT LUNAK BERLISENSI</p>
-                            <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 15</h4>
-                            <p>LAYANAN NARASUMBER BIDANG TIK</p>
-                            <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 16</h4>
-                            <p>LAYANAN PENINGKATAN KOMPETENSI TIK</p>
-                            <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-web">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 17</h4>
-                            <p>LAYANAN DUKUNGAN KEGIATAN KHUSUS</p>
-                            <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-app">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 18</h4>
-                            <p>LAYANAN VIDEO CONFERENCE</p>
-                            <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 19</h4>
-                            <p>LAYANAN DUKUNGAN PIMPINAN</p>
-                            <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-card">
-                        <img src="<?= base_url('data modul/Regna/'); ?>assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan 20</h4>
-                            <p>LAYANAN INFORMASI TIK</p>
-                            <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-                            <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div> -->
+<?php } ?>
+                    
 
 
                 </div>

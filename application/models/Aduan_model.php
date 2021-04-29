@@ -139,10 +139,10 @@ class Aduan_model extends Ci_Model
         return $q;
     }
 
-    public function upload_aduan()
+    public function upload_aduan1()
     {
-        $config['upload_path'] = 'files/';
-        $config['allowed_types'] = 'doc|docx|pdf|xls|xlsx';
+        $config['upload_path'] = './files/';
+        $config['allowed_types'] = 'doc|docx|pdf|xls|xlsx|jpg|jpeg|png';
         $config['max_size']  = '2048';
         $config['remove_space'] = TRUE;
 
@@ -159,20 +159,46 @@ class Aduan_model extends Ci_Model
             return $return;
         }
     }
+    public function upload_aduan2()
+    {
+        $config['upload_path'] = './files/';
+        $config['allowed_types'] = 'doc|docx|pdf|xls|xlsx|jpg|jpeg|png';
+        $config['max_size']  = '2048';
+        $config['remove_space'] = TRUE;
 
-    // Fungsi untuk menyimpan data ke database
-    // public function save($upload)
-    // {
-    //     $data = array(
-    //         'deskripsi' => $this->input->post('input_deskripsi'),
-    //         'nama_file' => $upload['file']['file_name'],
-    //         'ukuran_file' => $upload['file']['file_size'],
-    //         'tipe_file' => $upload['file']['file_type']
-    //     );
+        $this->load->library('upload', $config); // Load konfigurasi uploadnya
+        if ($this->upload->do_upload('file2')) { // Lakukan upload dan Cek jika proses upload berhasil
+            // Jika berhasil :
+            $return = array(
+                'result' => 'success', 'file' => $this->upload->data(), 'error' => ''
+            );
+            return $return;
+        } else {
+            // Jika gagal :
+            $return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
+            return $return;
+        }
+    }
+    public function upload_aduan3()
+    {
+        $config['upload_path'] = './files/';
+        $config['allowed_types'] = 'doc|docx|pdf|xls|xlsx|jpg|jpeg|png';
+        $config['max_size']  = '2048';
+        $config['remove_space'] = TRUE;
 
-    //     $this->db->insert('gambar', $data);
-    // }
+        $this->load->library('upload', $config); // Load konfigurasi uploadnya
+        if ($this->upload->do_upload('file3')) { // Lakukan upload dan Cek jika proses upload berhasil
+            // Jika berhasil :
+            $return = array(
+                'result' => 'success', 'file' => $this->upload->data(), 'error' => ''
+            );
+            return $return;
+        } else {
+            // Jika gagal :
+            $return = array('result' => 'failed', 'file' => '', 'error' => $this->upload->display_errors());
+            return $return;
+        }
+    }
+
 }
 
-/* End of file user_model.php */
-/* Location: ./application/models/user_model.php */

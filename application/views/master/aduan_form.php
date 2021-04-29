@@ -35,7 +35,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Form <?= $sub == 'add' ? 'Tambah' : 'Edit' ?> Pengguna</h4>
-                    <form class="forms-sample" action="<?= base_url("master/aduan_do/$sub") ?>" method="post">
+                    <form enctype="multipart/form-data" class="forms-sample" action="<?= base_url("master/aduan_do/$sub") ?>" method="post" >
                         <?= $user['KategoriId'] ?>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Kategori <span style="color:red">(Harus Dipilih)</span></label>

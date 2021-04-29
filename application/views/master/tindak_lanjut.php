@@ -122,7 +122,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                         <div class="wrapper d-flex align-items-center py-2 border-bottom">
                             <div class="wrapper ml-3">
                                 <h6 class="ml-1 mb-1">Files 1</h6>
-                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i>asfdasfafasf.doc</small>
+                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i><a href="<?= base_url("files/".$aduanid->AduanFiles1) ?>"><?= $aduanid->AduanFiles1 ?></a></small>
                             </div>
                             <div class="badge badge-pill badge-info ml-auto px-1 py-1"><i class="mdi mdi-check font-weight-bold"></i></div>
                         </div>
@@ -131,7 +131,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                         <div class="wrapper d-flex align-items-center py-2 border-bottom">
                             <div class="wrapper ml-3">
                                 <h6 class="ml-1 mb-1">Files 2</h6>
-                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i>asfdasfafasf.doc</small>
+                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i><a href="<?= base_url("files/".$aduanid->AduanFiles2) ?>"><?= $aduanid->AduanFiles2 ?></a></small>
                             </div>
                             <div class="badge badge-pill badge-info ml-auto px-1 py-1"><i class="mdi mdi-check font-weight-bold"></i></div>
                         </div>
@@ -141,7 +141,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                         <div class="wrapper d-flex align-items-center py-2 border-bottom">
                             <div class="wrapper ml-3">
                                 <h6 class="ml-1 mb-1">Files 3</h6>
-                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i>asfdasfafasf.doc</small>
+                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i><a href="<?= base_url("files/".$aduanid->AduanFiles3) ?>"><?= $aduanid->AduanFiles3 ?></a></small>
                             </div>
                             <div class="badge badge-pill badge-info ml-auto px-1 py-1"><i class="mdi mdi-check font-weight-bold"></i></div>
                         </div>

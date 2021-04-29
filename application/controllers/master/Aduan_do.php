@@ -50,7 +50,12 @@ class Aduan_do extends YK_Controller
             $kategori = $this->aduan_model->getKategoriId($_POST['kategori']);
 
 
-            $upload = $this->aduan_model->upload_aduan();
+            $upload1 = $this->aduan_model->upload_aduan1();
+            $upload2 = $this->aduan_model->upload_aduan2();
+            $upload3 = $this->aduan_model->upload_aduan3();
+            $file1 = !empty($_FILES['file1']['name']) ? $_FILES['file1']['name'] : "";
+            $file2 = !empty($_FILES['file2']['name']) ? $_FILES['file2']['name'] : "";
+            $file3 = !empty($_FILES['file3']['name']) ? $_FILES['file3']['name'] : "";
             $data = array(
                 'AduanId' => $id,
                 'AduanKategoriId' => $_POST['kategori'],
@@ -63,30 +68,35 @@ class Aduan_do extends YK_Controller
                 'AduanDeskripsi' => $_POST['deskripsi'],
                 'AduanProses' => "permohonan",
                 'AduanTglPermohonan' => date('Y-m-d H:m:s'),
-                'AduanFiles1' => $_FILES['file1']['name'],
-                // 'AduanFiles2' => $_FILES['file2']['name'],
-                // 'AduanFiles3' => $_FILES['file3']['name'],
+                'AduanFiles1' => $file1,
+                'AduanFiles2' => $file2,
+                'AduanFiles3' => $file3,
             );
 
 
 
-            if ($upload['result'] == "success") { // Jika proses upload sukses
-                // Panggil function save yang ada di GambarModel.php untuk menyimpan data ke database
-                // $this->aduan_model->save($upload);
-                echo "berhasil";
-                // redirect('gambar'); // Redirect kembali ke halaman awal / halaman view data
-            } else { // Jika proses upload gagal
-                // $data['message'] = $upload['error']; // Ambil pesan error uploadnya untuk dikirim ke file form dan ditampilkan
-
-                echo "error";
+            if ($upload1['result'] == "success") { 
+                $image1 = "berhasil";
+            } else { 
+                $image1 = "error";
+            }
+            if ($upload2['result'] == "success") { 
+                $image2 = "berhasil";
+            } else { 
+                $image2 = "error";
+            }
+            if ($upload3['result'] == "success") { 
+                $image3 = "berhasil";
+            } else { 
+                $image3 = "error";
             }
 
             $result = $this->aduan_model->add($data);
             if (!$result) {
                 $this->session->set_flashdata(array('added' => true, 'msg' => 'Data baru berhasil ditambahkan!'));
-                echo json_encode(array('success' => true, 'msg' => 'Data Baru Berhasil Disimpan.'));
+                echo json_encode(array('success' => true, 'msg' => 'Data Baru Berhasil Disimpan.','image1' => $image1,'image2' => $image2,'image3' => $image3));
             } else {
-                echo json_encode(array('success' => false, 'msg' => 'Data Baru Gagal Disimpan!'));
+                echo json_encode(array('success' => false, 'msg' => 'Data Baru Gagal Disimpan!','image1' => $image1,'image2' => $image2,'image3' => $image3));
             }
         }
     }

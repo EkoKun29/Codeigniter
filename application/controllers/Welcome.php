@@ -19,9 +19,14 @@ class Welcome extends CI_Controller
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	function __construct(){
+		parent::__construct();
+		$this->load->model('landing_model');
+	}
 	public function index()
 	{
-		$this->load->view('landing');
+		$data['kategori'] = $this->landing_model->getKategori();
+		$this->load->view('landing',$data);
 
 		// $user = $this->db->query("SELECT * FROM yk_user")->result();
 
