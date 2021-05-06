@@ -48,7 +48,6 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                     <tr>
                                         <th>Tiket</th>
                                         <th>Pengirim</th>
-                                        <!-- <th>Kategori</th> -->
                                         <th>Jabatan</th>
                                         <th>Status</th>
                                         <th style="width:100px;">#</th>
@@ -70,13 +69,14 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                             } ?>>
                                             <td><?= $data->NoTiket; ?></td>
                                             <td><?= $data->AduanNamaPengirim; ?></td>
-                                            <!-- <td><?= $data->KategoriNama; ?></td> -->
                                             <td><?= $data->nmjabatan; ?></td>
                                             <td>
                                                 <div class="badge <?= $status_proses ?> badge-fw"><?= $data->AduanProses; ?></div>
                                             </td>
                                             <td><?php if ($data->AduanProses == "permohonan") { ?>
-
+                                                <a href="<?= base_url("master/aduan/detail/" . $data->AduanId) ?>" class="btn btn-primary">
+                                                        <i class="ace-icon fa fa-list bigger-120"></i>
+                                                    </a>
                                                     <a href="#" onclick="tindak_lanjut(<?= $data->AduanId ?>)" class="btn btn-success">
                                                         <i class="ace-icon fa fa-check bigger-120"></i>
                                                     </a>
@@ -86,12 +86,13 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                                     <a href="<?= base_url("master/aduan/update/" . $data->AduanId) ?>" class="btn btn-info">
                                                         <i class="ace-icon fa fa-pencil bigger-120"></i>
                                                     </a>
-                                                <?php } else { ?><a href="<?= base_url("master/aduan/detail/" . $data->AduanId) ?>" class="btn btn-primary">
+                                                <?php } else { ?>
+                                                <a href="<?= base_url("master/aduan/detail/" . $data->AduanId) ?>" class="btn btn-primary">
                                                         <i class="ace-icon fa fa-list bigger-120"></i>
                                                     </a>
 
                                                 <?php } ?>
-                                            </td>
+
                                         </tr>
                                     <?php } ?>
                                 </tbody>
@@ -116,7 +117,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                         <div class="wrapper d-flex align-items-center py-2 border-bottom">
                             <div class="wrapper ml-3">
                                 <h6 class="ml-1 mb-1">Files 1</h6>
-                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i><a href="<?= base_url("files/".$aduanid->AduanFiles1) ?>"><?= $aduanid->AduanFiles1 ?></a></small>
+                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i><a href="<?= base_url("files/" . $aduanid->AduanFiles1) ?>"><?= $aduanid->AduanFiles1 ?></a></small>
                             </div>
                             <div class="badge badge-pill badge-info ml-auto px-1 py-1"><i class="mdi mdi-check font-weight-bold"></i></div>
                         </div>
@@ -125,7 +126,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                         <div class="wrapper d-flex align-items-center py-2 border-bottom">
                             <div class="wrapper ml-3">
                                 <h6 class="ml-1 mb-1">Files 2</h6>
-                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i><a href="<?= base_url("files/".$aduanid->AduanFiles2) ?>"><?= $aduanid->AduanFiles2 ?></a></small>
+                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i><a href="<?= base_url("files/" . $aduanid->AduanFiles2) ?>"><?= $aduanid->AduanFiles2 ?></a></small>
                             </div>
                             <div class="badge badge-pill badge-info ml-auto px-1 py-1"><i class="mdi mdi-check font-weight-bold"></i></div>
                         </div>
@@ -135,7 +136,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                         <div class="wrapper d-flex align-items-center py-2 border-bottom">
                             <div class="wrapper ml-3">
                                 <h6 class="ml-1 mb-1">Files 3</h6>
-                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i><a href="<?= base_url("files/".$aduanid->AduanFiles3) ?>"><?= $aduanid->AduanFiles3 ?></a></small>
+                                <small class="text-muted mb-0"><i class="mdi mdi-map-marker-outline mr-1"></i><a href="<?= base_url("files/" . $aduanid->AduanFiles3) ?>"><?= $aduanid->AduanFiles3 ?></a></small>
                             </div>
                             <div class="badge badge-pill badge-info ml-auto px-1 py-1"><i class="mdi mdi-check font-weight-bold"></i></div>
                         </div>
