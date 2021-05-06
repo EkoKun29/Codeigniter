@@ -11,9 +11,9 @@ function __construct(){
 	public function index()
 	{
 		
-        $menu['menu'] = $this->system_model->getMenu($_SESSION['siltap']['userid']);
-        $data['username'] = $_SESSION['siltap']['username'];
-        $data['userid'] = $_SESSION['siltap']['userid'];
+        $menu['menu'] = $this->system_model->getMenu($_SESSION['desktik']['userid']);
+        $data['username'] = $_SESSION['desktik']['username'];
+        $data['userid'] = $_SESSION['desktik']['userid'];
 		$this->load->view('layouts/header', $menu);
 		$this->load->view('user/changepwd',$data);
 		$this->load->view('layouts/footer');
@@ -32,7 +32,7 @@ function __construct(){
 		$pwd_baru_2 = $this->input->post("pwd_baru_2");
 
 		$cek = $this->password_model->cek_pwd($userid,sha1($pwd_lama));
-		if($userid == $_SESSION['siltap']['userid'] AND $pwd_baru == $pwd_baru_2){
+		if($userid == $_SESSION['desktik']['userid'] AND $pwd_baru == $pwd_baru_2){
 
 			if($cek != 0){
 				$data = array(
