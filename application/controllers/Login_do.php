@@ -32,19 +32,19 @@ class Login_do extends CI_Controller
             $group = $this->authentication_model->getGroup($data['UserId']);
             if ($data['UserName'] != "admin") {
                 $pegawai = $this->authentication_model->pegawaiByNip($data['UserNip']);
-                $_SESSION['siltap']['nip'] =  $pegawai->nip;
-                $_SESSION['siltap']['kdlokasi'] =  $pegawai->kdlokasi;
-                $_SESSION['siltap']['kdinstansi'] =  $pegawai->kdinstansi;
-                $_SESSION['siltap']['nminstansi'] =  $pegawai->nminstansi;
-                $_SESSION['siltap']['nmjabatan'] =  $pegawai->nmjabatan;
+                $_SESSION['desktik']['nip'] =  $pegawai->nip;
+                $_SESSION['desktik']['kdlokasi'] =  $pegawai->kdlokasi;
+                $_SESSION['desktik']['kdinstansi'] =  $pegawai->kdinstansi;
+                $_SESSION['desktik']['nminstansi'] =  $pegawai->nminstansi;
+                $_SESSION['desktik']['nmjabatan'] =  $pegawai->nmjabatan;
             }
-
-            $_SESSION['siltap']['groupid'] = $group->GroupId;
-            $_SESSION['siltap']['group'] = $group->GroupName;
-            $_SESSION['siltap']['userid'] = $data['UserId'];
-            $_SESSION['siltap']['username'] = $data['UserName'];
-            $_SESSION['siltap']['groupid'] = $data['UserGroupGroupId'];
-            $_SESSION['siltap']['realname'] = $data['UserRealName'];
+            $_SESSION['desktik']['kdjabatan'] =  $pegawai->kdjabatan;
+            $_SESSION['desktik']['groupid'] = $group->GroupId;
+            $_SESSION['desktik']['group'] = $group->GroupName;
+            $_SESSION['desktik']['userid'] = $data['UserId'];
+            $_SESSION['desktik']['username'] = $data['UserName'];
+            $_SESSION['desktik']['groupid'] = $data['UserGroupGroupId'];
+            $_SESSION['desktik']['realname'] = $data['UserRealName'];
 
             return TRUE;
         } else {

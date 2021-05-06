@@ -11,7 +11,7 @@ class Dashboard extends YK_Controller
         $sess = $this->session->userdata('user');
         $bulan = date('n');
         $tahun = date('Y');
-        $data['sess']  = $this->session->userdata('siltap');
+        $data['sess']  = $this->session->userdata('desktik');
 
         $this->load_view('home/dashboard', $data);
     }

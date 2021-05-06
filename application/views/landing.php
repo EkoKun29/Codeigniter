@@ -266,22 +266,22 @@
 
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
-<?php 
-$no = 1;
-foreach($kategori as $row){
-    ?>
-                    <div class="col-lg-3 col-md-4 portfolio-item filter-app">
-                        <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
-                        <div class="portfolio-info">
-                            <h4>Layanan <?= $no++?></h4>
-                            <p><?= $row->KategoriNama; ?></p>
-                            <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="<?= $row->KategoriNama?>"><i class="bx bx-plus"></i></a>
-                            <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
+                    <?php
+                    $no = 1;
+                    foreach ($kategori as $row) {
+                    ?>
+                        <div class="col-lg-3 col-md-4 portfolio-item filter-app">
+                            <img src="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" class="img-fluid" alt="" />
+                            <div class="portfolio-info">
+                                <!-- <h4>Layanan <?= $no++ ?></h4> -->
+                                <p><?= $row->KategoriNama; ?></p>
+                                <a href="<?= base_url('img/layanan/'); ?>portfolio-1-01.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="<?= $row->KategoriNama ?>"><i class="bx bx-plus"></i></a>
+                                <!-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
+                            </div>
                         </div>
-                    </div>
 
-<?php } ?>
-                    
+                    <?php } ?>
+
 
 
                 </div>

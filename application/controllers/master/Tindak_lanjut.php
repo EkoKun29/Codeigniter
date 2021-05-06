@@ -10,7 +10,7 @@ class Tindak_lanjut extends YK_Controller
     }
     public function index()
     {
-        $sess = $_SESSION['siltap'];
+        $sess = $_SESSION['desktik'];
         $kdlokasi = !empty($sess['kdlokasi']) ? $sess['kdlokasi'] : "";
         $cek_adm_bidang = $this->tindak_lanjut_model->cekAdmBidang($kdlokasi);
 
@@ -18,7 +18,7 @@ class Tindak_lanjut extends YK_Controller
             $data['aduan'] = $this->tindak_lanjut_model->getAllByAdmin();
             $this->load_view('master/tindak_lanjut_bidang', $data);
         } else {
-            if ($cek_adm_bidang->num_rows() == 1) {
+            if ($cek_adm_bidang->num_rows() != 0 and $sess['kdjabatan'] == 20000) {
                 $data['aduan'] = $this->tindak_lanjut_model->getAllByBidang($cek_adm_bidang->row()->KategoriId);
                 $this->load_view('master/tindak_lanjut_bidang', $data);
             } else {
@@ -29,7 +29,7 @@ class Tindak_lanjut extends YK_Controller
     }
     function detail($aduan_id)
     {
-        $sess = $_SESSION['siltap'];
+        $sess = $_SESSION['desktik'];
         $kdlokasi = !empty($sess['kdlokasi']) ? $sess['kdlokasi'] : "";
         $cek_adm_bidang = $this->tindak_lanjut_model->cekAdmBidang($kdlokasi);
 
@@ -38,15 +38,18 @@ class Tindak_lanjut extends YK_Controller
         if ($sess['groupid'] == 1) {
             $data['aduan'] = $this->tindak_lanjut_model->getAllByAdmin();
             $data['aduanid'] = $this->tindak_lanjut_model->getId($aduan_id);
+            $data['tindaklanjutid'] = $this->tindak_lanjut_model->TindakLanjutBy($aduan_id);
             $this->load_view('master/tindak_lanjut_bidang', $data);
         } else {
-            if ($cek_adm_bidang->num_rows() == 1) {
+            if ($cek_adm_bidang->num_rows() != 0 and $sess['kdjabatan'] == 20000) {
                 $data['aduan'] = $this->tindak_lanjut_model->getAllByBidang($cek_adm_bidang->row()->KategoriId);
                 $data['aduanid'] = $this->tindak_lanjut_model->getId($aduan_id);
+                $data['tindaklanjutid'] = $this->tindak_lanjut_model->TindakLanjutBy($aduan_id);
                 $this->load_view('master/tindak_lanjut_bidang', $data);
             } else {
                 $data['aduan'] = $this->tindak_lanjut_model->getAll($sess['nip']);
                 $data['aduanid'] = $this->tindak_lanjut_model->getId($aduan_id);
+                $data['tindaklanjutid'] = $this->tindak_lanjut_model->TindakLanjutBy($aduan_id);
                 $this->load_view('master/tindak_lanjut', $data);
             }
         }
@@ -55,20 +58,25 @@ class Tindak_lanjut extends YK_Controller
 
     function add()
     {
-        $sess = $this->session->userdata('siltap');
+        $sess = $this->session->userdata('desktik');
         $data['user'] = $this->tindak_lanjut_model->getEmptyUser();
         $data['kategori'] = $this->tindak_lanjut_model->getKategori();
         $data['sub'] = 'add';
         $this->load_view('master/aduan_form', $data);
     }
 
-    function update()
+    function update($mode)
     {
-        $id = $_POST['id'];
-        $sess = $_SESSION['siltap'];
-        $data['user'] = $this->tindak_lanjut_model->getById($id, $sess['nip']);
-        $data['sub'] = 'update';
-        $this->load->view('master/tindak_lanjut_edit', $data);
+        if ($mode == "deskripsi") {
+            $id = $_POST['id'];
+            $sess = $_SESSION['desktik'];
+            $data['user'] = $this->tindak_lanjut_model->getById($id, $sess['nip']);
+            $data['sub'] = 'update';
+            $this->load->view('master/tindak_lanjut_edit', $data);
+        } elseif ($mode == "forward") {
+            $data['kategori'] = $this->tindak_lanjut_model->kategori();
+            $this->load->view('master/tindak_lanjut_forward',$data);
+        }
     }
 }
 

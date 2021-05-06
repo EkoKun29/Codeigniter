@@ -10,15 +10,14 @@ class Aduan extends YK_Controller
     }
     public function index()
     {
-        $sess = $_SESSION['siltap'];
+        $sess = $_SESSION['desktik'];
         $kdlokasi = !empty($sess['kdlokasi']) ? $sess['kdlokasi'] : "";
         $cek_adm_bidang = $this->aduan_model->cekAdmBidang($kdlokasi);
-
         if ($sess['groupid'] == 1) {
             $data['aduan'] = $this->aduan_model->getAllByAdmin();
             $this->load_view('master/aduan_bidang', $data);
         } else {
-            if ($cek_adm_bidang->num_rows() == 1) {
+            if ($cek_adm_bidang->num_rows() != 0 AND $sess['kdjabatan']==20000) {
                 $data['aduan'] = $this->aduan_model->getAllByBidang($cek_adm_bidang->row()->KategoriId);
                 $this->load_view('master/aduan_bidang', $data);
             } else {
@@ -29,7 +28,7 @@ class Aduan extends YK_Controller
     }
     function detail($aduan_id)
     {
-        $sess = $_SESSION['siltap'];
+        $sess = $_SESSION['desktik'];
         $kdlokasi = !empty($sess['kdlokasi']) ? $sess['kdlokasi'] : "";
         $cek_adm_bidang = $this->aduan_model->cekAdmBidang($kdlokasi);
 
@@ -39,7 +38,7 @@ class Aduan extends YK_Controller
             $data['tindak_lanjut'] = $this->aduan_model->getTindakLanjut($aduan_id);
             $this->load_view('master/aduan_bidang', $data);
         } else {
-            if ($cek_adm_bidang->num_rows() == 1) {
+            if ($cek_adm_bidang->num_rows() != 0 AND $sess['kdjabatan']==20000) {
                 $data['aduan'] = $this->aduan_model->getAllByBidang($cek_adm_bidang->row()->KategoriId);
                 $data['aduanid'] = $this->aduan_model->getId($aduan_id);
                 $data['tindak_lanjut'] = $this->aduan_model->getTindakLanjut($aduan_id);
@@ -56,7 +55,7 @@ class Aduan extends YK_Controller
 
     function add()
     {
-        $sess = $this->session->userdata('siltap');
+        $sess = $this->session->userdata('desktik');
         $data['user'] = $this->aduan_model->getEmptyUser();
         $data['kategori'] = $this->aduan_model->getKategori();
         $data['sub'] = 'add';
@@ -65,7 +64,7 @@ class Aduan extends YK_Controller
 
     function update($id)
     {
-        $sess = $_SESSION['siltap'];
+        $sess = $_SESSION['desktik'];
         $data['user'] = $this->aduan_model->getById($id);
         $data['kategori'] = $this->aduan_model->getKategori();
         $data['sub'] = 'update/update';
@@ -73,7 +72,7 @@ class Aduan extends YK_Controller
     }
     function search()
     {
-        $sess = $_SESSION['siltap'];
+        $sess = $_SESSION['desktik'];
         // $data['user'] = $this->aduan_model->getById($id);
         // $data['kategori'] = $this->aduan_model->getKategori();
         $data['sub'] = 'update/update';

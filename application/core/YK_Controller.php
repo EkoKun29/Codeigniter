@@ -21,8 +21,8 @@ class YK_Controller extends CI_Controller {
             $this->load->model('system_model');
             $this->load->model('menu_model');
             
-            $menu['menu'] = $this->system_model->getMenu($_SESSION['siltap']['userid']);
-            $menu['authentication'] = $this->menu_model->getAuth($this->uri->segment(1)."/".$this->uri->segment(2), $_SESSION['siltap']['userid']);            
+            $menu['menu'] = $this->system_model->getMenu($_SESSION['desktik']['userid']);
+            $menu['authentication'] = $this->menu_model->getAuth($this->uri->segment(1)."/".$this->uri->segment(2), $_SESSION['desktik']['userid']);            
             $this->load->view('layouts/header', $menu);
             $this->load->view($template, $data);
             $this->load->view('layouts/footer');
@@ -39,7 +39,7 @@ class YK_Controller extends CI_Controller {
         $this->load->model('authentication_model');
         $module_non_login = array('main','frontend');
         $module_login = array('home', 'login', 'ajax');
-        $uid = empty($_SESSION['siltap']['userid']) ? 0 : $_SESSION['siltap']['userid'];
+        $uid = empty($_SESSION['desktik']['userid']) ? 0 : $_SESSION['desktik']['userid'];
         $module = ($this->uri->segment(1) == '' ? 'home' : $this->uri->segment(1));
         $class = ($this->uri->segment(2) == '' ? 'home' : $this->uri->segment(2));
         if (substr($class, strlen($class) - 3, 3) == '_do')
@@ -60,7 +60,7 @@ class YK_Controller extends CI_Controller {
 
     function cek_same_password(){
         $status = $this->config->item("environment");
-        $siltap = $this->session->userdata('siltap');
+        $siltap = $this->session->userdata('desktik');
         if($status =="production"){
             $userid = $siltap['userid'];
             $user = $this->authentication_model->getIdUser($userid);

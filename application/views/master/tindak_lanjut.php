@@ -19,55 +19,90 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                             <i class="fa fa-plus"></i> Tambah Baru
                         </a>
                     </div> -->
-                    <h3 class="card-title">Tindak Lanjut</h3>
+                    <h3 class="card-title">PROSES TINDAK LANJUT</h3>
                     <div class="row">
                         <div class="card"> </div>
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="example2">
-                                <thead>
-                                    <tr>
-                                        <th>Tiket</th>
-                                        <th>Nama Pengirim</th>
-                                        <th>Tgl Tindak Lanjut</th>
-                                        <!-- <th>Deskripsi</th> -->
-                                        <th>Proses</th>
-                                        <th style="width:50px;">#</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($aduan as $data) {
-                                        if ($data->TindakLanjutProses == "selesai") {
-                                            $status_proses = "badge-success";
-                                        } elseif ($data->TindakLanjutProses == "dibatalkan") {
-                                            $status_proses = "badge-danger";
-                                        } else {
-                                            $status_proses = "badge-warning";
-                                        }
+                        <div class="mt-5">
+                    <div class="timeline">
+                        <div class="timeline-wrapper timeline-wrapper-warning">
+                            <div class="timeline-badge"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h6 class="timeline-title">Permohonan</h6>
+                                </div>
+                                <div class="timeline-body">
+                                    <?php if ($aduanid != NULL) { ?>
+                                        <?= $aduanid->AduanDeskripsi ?>
+                                    <?php } else { ?>
 
-                                    ?>
-                                        <tr <?php if ($data->AduanId == $aduanid->AduanId) {
-                                                echo "style='background-color:rgb(0, 180, 255); color:white'";
-                                            } ?>>
-                                            <td><?= $data->NoTiket; ?></td>
-                                            <td><?= $data->AduanNamaPengirim; ?></td>
-                                            <td><?= $data->TindakLanjutTgl; ?></td>
-                                            <!-- <td><?= $data->TindakLanjutDeskripsi; ?></td> -->
-                                            <td>
-                                                <div class="badge <?= $status_proses ?> badge-fw"><?= $data->TindakLanjutProses; ?></div>
-                                            </td>
-                                            <td>
-                                                <a href="<?= base_url("master/tindak_lanjut/detail/" . $data->AduanId) ?>" class="btn btn-primary">
-                                                    <i class="ace-icon fa fa-list bigger-120"></i>
-                                                </a>
-                                                <!-- <a href="<?= base_url("master/tindak_lanjut/update/update/" . $data->AduanId) ?>" class="btn btn-info">
-                                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                                </a> -->
-
-                                            </td>
-                                        </tr>
+                                        <span style="color: grey;">Tindak Lanjut Belum Dipilih</span>
                                     <?php } ?>
-                                </tbody>
-                            </table>
+                                </div>
+                            </div>
+                        </div>
+                        <?php foreach($tindaklanjutid as $data){?>
+<?php if($data->TindakLanjutProses =="selesai"){?>
+    <div  class="timeline-wrapper timeline-inverted timeline-wrapper-success">
+                                <?php }else{ ?>
+                                    <div  class="timeline-wrapper timeline-inverted timeline-wrapper-danger">
+                                <?php } ?>
+                        
+                            <div class="timeline-badge"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                <?php if($data->TindakLanjutProses =="selesai"){?>
+                                    <h6 class="timeline-title" style="color:green"><span class="fa fa-check-circle"></span> <?= $data->TindakLanjutDari?></h6>
+                                <?php }else{ ?>
+                                    <h6 class="timeline-title" style="color:orange"><span class="fa fa fa-window-close"></span> <?= $data->TindakLanjutDari?></h6>
+                                <?php } ?>
+                                </div>
+                                <div class="timeline-body">
+                                    <?php if ($data->AduanProses == "diterima") { ?>
+                                        <?php if ($data->TindakLanjutKdLokasi == $_SESSION['desktik']['kdlokasi']) {
+                                            echo $data->TindakLanjutDeskripsi;
+                                        ?>
+                                        <span style="color:grey; font-size:12px"><?= $data->TindakLanjutTgl?></span>
+                                        
+                                            <a href="#" class="btn btn-success create-deskripsi" data-id="<?= $data->TindakLanjutId; ?>">
+                                                <i class="fa fa-plus"></i> Edit Deskripsi
+                                            </a>
+                                        <?php
+                                        } else { ?>
+                                           <?= $data->TindakLanjutDeskripsi; ?>
+                                           <span style="color:grey; font-size:12px"><?= $data->TindakLanjutTgl?></span>
+                                       <?php }
+                                        ?>
+                                    <?php } else { ?>
+                                        <span style="color: grey;">Belum Ada Tindak Lanjut</span>
+
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- <div class="timeline-wrapper timeline-wrapper-success">
+                            <div class="timeline-badge"></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h6 class="timeline-title">Selesai</h6>
+                                </div>
+                                <div class="timeline-body">
+                                    <?php if ($aduanid->AduanProses == "diterima") { ?>
+                                        <?php if ($aduanid->TindakLanjutProses == "selesai") {
+                                            echo "Sudah Selesai";
+                                        } else {
+                                            echo "Belum Selesai";
+                                        } ?>
+                                    <?php } else { ?>
+                                        <span style="color: grey;">Belum Ada Tindak Lanjut</span>
+
+                                    <?php } ?>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
                         </div>
                     </div>
                 </div>
@@ -76,7 +111,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
         <div class="col-lg-6 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">PROSES TINDAK LANJUT</h4>
+                    <h4 class="card-title">DETAIL</h4>
                     <p class="card-description">
                         <?php if ($aduanid != NULL) { ?>
                     <h4></h4>
@@ -97,23 +132,13 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                             <td>Tindak Lanjut: </td>
                             <td><b><?= $aduanid->TindakLanjutDari ?></b> </td>
                         </tr>
-                        <tr>
-                            <td>Deskripsi Tindak Lanjut: </td>
-                            <td><b><?= $aduanid->TindakLanjutDeskripsi ?></b> </td>
-                        </tr>
+                        
                         <tr>
                             <td>Tanggal Permohonan: </td>
                             <td><b><?= $aduanid->AduanTglPermohonan    ?></b> </td>
                         </tr>
 
-                        <tr>
-                            <td>Tanggal Tindak Lanjut: </td>
-                            <td><b><?= $aduanid->TindakLanjutTgl ?></b> </td>
-                        </tr>
-                        <tr>
-                            <td>Tanggal Selesai: </td>
-                            <td><b><?= $aduanid->TindakLanjutTglSelesai ?></b> </td>
-                        </tr>
+                        
                     </table>
                     <br>
                     <!-- <span style="color: grey;"><?= $aduanid->TindakLanjutTgl ?></span> -->
@@ -154,67 +179,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                     <span style="color: grey;">Tindak Lanjut Belum Dipilih</span>
                 <?php } ?>
                 </p>
-                <div class="mt-5">
-                    <div class="timeline">
-                        <div class="timeline-wrapper timeline-wrapper-warning">
-                            <div class="timeline-badge"></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h6 class="timeline-title">Permohonan</h6>
-                                </div>
-                                <div class="timeline-body">
-                                    <?php if ($aduanid != NULL) { ?>
-                                        <?= $aduanid->AduanDeskripsi ?>
-                                    <?php } else { ?>
-
-                                        <span style="color: grey;">Tindak Lanjut Belum Dipilih</span>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-wrapper timeline-inverted timeline-wrapper-danger">
-                            <div class="timeline-badge"></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h6 class="timeline-title">Tindak Lanjut</h6>
-                                </div>
-                                <div class="timeline-body">
-                                    <?php if ($aduanid->AduanProses == "diterima") { ?>
-                                        <?php if ($aduanid->TindakLanjutDeskripsi != NULL) {
-                                            echo $aduanid->TindakLanjutDeskripsi;
-                                        } else {
-                                            echo "<span style='color: grey;'>Deskripsi Kosong</span>";
-                                        }
-                                        ?>
-                                    <?php } else { ?>
-                                        <span style="color: grey;">Belum Ada Tindak Lanjut</span>
-
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-wrapper timeline-wrapper-success">
-                            <div class="timeline-badge"></div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h6 class="timeline-title">Selesai</h6>
-                                </div>
-                                <div class="timeline-body">
-                                    <?php if ($aduanid->AduanProses == "diterima") { ?>
-                                        <?php if ($aduanid->TindakLanjutProses == "selesai") {
-                                            echo "Sudah Selesai";
-                                        } else {
-                                            echo "Belum Selesai";
-                                        } ?>
-                                    <?php } else { ?>
-                                        <span style="color: grey;">Belum Ada Tindak Lanjut</span>
-
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 </div>
             </div>
         </div>

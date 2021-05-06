@@ -31,15 +31,22 @@ class Tindak_lanjut_model extends Ci_Model
     function getAllByBidang($kategori)
     {
         // $user = $this->db->query('SELECT * FROM ');
-
+        
         $this->db->select('*');
-        $this->db->from('aduan a');
-        $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
-        $this->db->join('_lokasi c', 'c.kdlokasi = a.AduanKdLokasi');
-        $this->db->join('tindak_lanjut d', 'd.TindakLanjutAduanId = a.AduanId');
-        $this->db->where('a.AduanKategoriId', $kategori);
+        $this->db->from('tindak_lanjut a');
+        // $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
+        // $this->db->join('_lokasi c', 'c.kdlokasi = a.AduanKdLokasi');
+        // $this->db->join('tindak_lanjut d', 'd.TindakLanjutKategoriId = a.AduanKategoriId','right');
+        $this->db->where('a.TindakLanjutKategoriId', $kategori);
+        
         $query = $this->db->get();
         return $query->result();
+    }
+
+    function aduan($kategori){
+        $this->db->where('AduanKategoriId', $kategori);
+        $q = $this->db->get("aduan");
+        return $q->result();
     }
     function getAllByAdmin()
     {
@@ -63,6 +70,17 @@ class Tindak_lanjut_model extends Ci_Model
 
         return $query->row();
     }
+    function TindakLanjutBy($aduanid)
+    {
+        $this->db->select('*');
+        $this->db->from('aduan a');
+        $this->db->join('tindak_lanjut c', 'c.TindakLanjutAduanId = a.AduanId');
+        $this->db->where('a.AduanId', $aduanid);
+        $query = $this->db->get();
+
+        return $query->result();
+    }
+
     function add($data)
     {
         $this->db->insert('tindak_lanjut', $data);
@@ -93,5 +111,20 @@ class Tindak_lanjut_model extends Ci_Model
         $this->db->where('KategoriSeksi', $kdlokasi);
         $q = $this->db->get('ref_kategori');
         return $q;
+    }
+    function kategori(){
+        $q = $this->db->get('ref_kategori');
+        return $q->result();
+    }
+    function kategoriId($kategoriid){
+        $this->db->where('KategoriId',$kategoriid);
+        $q = $this->db->get('ref_kategori');
+        return $q->row();
+    }
+    function getPegawaiByLokasi($kdlokasi){
+        $this->db->where('kdlokasi',$kdlokasi);
+        $this->db->where('kdjabatan',20000);
+        $q = $this->db->get('_pegawai');
+        return $q->row();
     }
 }

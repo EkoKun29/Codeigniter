@@ -42,13 +42,12 @@ class Aduan_do extends YK_Controller
             $lastid = $this->aduan_model->lastid();
             if ($lastid->num_rows() != 0) {
                 $id = (int)$lastid->row()->AduanId + 1;
-                $tiket = "PN" . str_pad($id, 5, "0", STR_PAD_LEFT);
+                $tiket = date('Y').".". str_pad($id, 6, "0", STR_PAD_LEFT);
             } else {
-                $tiket = "PN00001";
+                $tiket = date('Y').".000001";
                 $id = 1;
             }
             $kategori = $this->aduan_model->getKategoriId($_POST['kategori']);
-
 
             $upload1 = $this->aduan_model->upload_aduan1();
             $upload2 = $this->aduan_model->upload_aduan2();
@@ -61,10 +60,11 @@ class Aduan_do extends YK_Controller
                 'AduanKategoriId' => $_POST['kategori'],
                 'NoTiket' => $tiket,
                 'AduanSeksi' => $kategori->KategoriSeksi,
-                'AduanNipPengirim' => $_SESSION['siltap']['nip'],
-                'AduanNamaPengirim' => $_SESSION['siltap']['realname'],
-                'AduanKdLokasi' => $_SESSION['siltap']['kdlokasi'],
-                'AduanKdInstansi' => $_SESSION['siltap']['kdinstansi'],
+                'AduanKdjabatan' => 20000,
+                'AduanNipPengirim' => $_SESSION['desktik']['nip'],
+                'AduanNamaPengirim' => $_SESSION['desktik']['realname'],
+                'AduanKdLokasi' => $_SESSION['desktik']['kdlokasi'],
+                'AduanKdInstansi' => $_SESSION['desktik']['kdinstansi'],
                 'AduanDeskripsi' => $_POST['deskripsi'],
                 'AduanProses' => "permohonan",
                 'AduanTglPermohonan' => date('Y-m-d H:m:s'),
@@ -103,6 +103,7 @@ class Aduan_do extends YK_Controller
 
     function update($mode)
     {
+        $sess = $_SESSION['desktik'];
         if ($mode == "update") {
             $status = !empty($_POST['status']) ? $_POST['status'] : "";
             if ($status == "EditTolak") {
@@ -156,7 +157,9 @@ class Aduan_do extends YK_Controller
                 'TindakLanjutId' => $lastid,
                 'TindakLanjutAduanId' => $_POST['id'],
                 'TindakLanjutKategoriId' => $aduan->KategoriId,
-                'TindakLanjutDari' => $_SESSION['siltap']['realname'],
+                'TindakLanjutKdLokasi' => $sess['kdlokasi'],
+                'TindakLanjutKdJabatan' => 20000,
+                'TindakLanjutDari' => $_SESSION['desktik']['realname'],
                 'TindakLanjutProses' => "tindak_lanjut",
                 'TindakLanjutTgl' => date("Y-m-d H:d:s"),
             );

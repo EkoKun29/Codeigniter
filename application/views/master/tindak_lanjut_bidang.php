@@ -14,7 +14,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Deskripsi Tindak Lanjut</h4>
+                <h4 class="modal-title">Tindak Lanjut</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -58,6 +58,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                 </thead>
                                 <tbody>
                                     <?php foreach ($aduan as $data) {
+                                        $aduan = $this->tindak_lanjut_model->getId($data->TindakLanjutAduanId);
                                         if ($data->TindakLanjutProses == "selesai") {
                                             $status_proses = "badge-success";
                                         } elseif ($data->TindakLanjutProses == "dibatalkan") {
@@ -67,21 +68,21 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                         }
 
                                     ?>
-                                        <tr <?php if ($data->AduanId == $aduanid->AduanId) {
+                                        <tr <?php if ($aduan->AduanId == $aduanid->AduanId) {
                                                 echo "style='background-color:rgb(0, 180, 255); color:white'";
                                             } ?>>
-                                            <td><?= $data->NoTiket; ?></td>
-                                            <td><?= $data->AduanNamaPengirim; ?></td>
+                                            <td><?= $aduan->NoTiket; ?></td>
+                                            <td><?= $aduan->AduanNamaPengirim; ?></td>
                                             <td><?= $data->TindakLanjutTgl; ?></td>
                                             <!-- <td><?= $data->TindakLanjutDeskripsi; ?></td> -->
                                             <td>
-                                                <div class="badge <?= $status_proses ?> badge-fw"><?= $data->TindakLanjutProses; ?></div>
+                                                <div class="badge <?= $status_proses ?> badge-fw"><?= $aduan->TindakLanjutProses; ?></div>
                                             </td>
                                             <td>
-                                                <a href="<?= base_url("master/tindak_lanjut/detail/" . $data->AduanId) ?>" class="btn btn-primary">
+                                                <a href="<?= base_url("master/tindak_lanjut/detail/" . $aduan->AduanId) ?>" class="btn btn-primary">
                                                     <i class="ace-icon fa fa-list bigger-120"></i>
                                                 </a>
-                                                <!-- <a href="<?= base_url("master/tindak_lanjut/update/update/" . $data->AduanId) ?>" class="btn btn-info">
+                                                <!-- <a href="<?= base_url("master/tindak_lanjut/update/update/" . $aduanid->AduanId) ?>" class="btn btn-info">
                                                     <i class="ace-icon fa fa-pencil bigger-120"></i>
                                                 </a> -->
                                                 <?php if ($data->TindakLanjutProses == "tindak_lanjut") { ?>
@@ -89,6 +90,12 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                                         <i class="ace-icon fa fa-check bigger-120"></i>
                                                     </a>
                                                 <?php } ?>
+                                                <a href="#" class="btn btn-warning create-forward" data-id="<?= $aduanid->TindakLanjutAduanId; ?>">
+                                                <i class="fa fa-mail-forward"></i>
+                                            </a>
+                                                <a href="#" onclick="hapus(<?= $data->TindakLanjutId ?>)" class="btn btn-danger">
+                                                        <i class="ace-icon fa fa-trash bigger-120"></i>
+                                                    </a>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -115,14 +122,14 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                             <td>Deskripsi Permohonan: </td>
                             <td><b><?= $aduanid->AduanDeskripsi ?></b> </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td>Pengirim: </td>
                             <td><b><?= $aduanid->AduanNamaPengirim ?></b> </td>
                         </tr>
                         <tr>
                             <td>Tindak Lanjut: </td>
                             <td><b><?= $aduanid->TindakLanjutDari ?></b> </td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <td>Deskripsi Tindak Lanjut: </td>
                             <td><b><?= $aduanid->TindakLanjutDeskripsi ?></b> </td>
@@ -132,14 +139,6 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                             <td><b><?= $aduanid->AduanTglPermohonan    ?></b> </td>
                         </tr>
 
-                        <tr>
-                            <td>Tanggal Tindak Lanjut: </td>
-                            <td><b><?= $aduanid->TindakLanjutTgl ?></b> </td>
-                        </tr>
-                        <tr>
-                            <td>Tanggal Selesai: </td>
-                            <td><b><?= $aduanid->TindakLanjutTglSelesai ?></b> </td>
-                        </tr>
                     </table>
                     <br>
                     <!-- <span style="color: grey;"><?= $aduanid->TindakLanjutTgl ?></span> -->
@@ -198,28 +197,38 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                 </div>
                             </div>
                         </div>
-                        <div class="timeline-wrapper timeline-inverted timeline-wrapper-danger">
+
+<?php foreach($tindaklanjutid as $data){?>
+<?php if($data->TindakLanjutProses =="selesai"){?>
+    <div  class="timeline-wrapper timeline-inverted timeline-wrapper-success">
+                                <?php }else{ ?>
+                                    <div  class="timeline-wrapper timeline-inverted timeline-wrapper-danger">
+                                <?php } ?>
+                        
                             <div class="timeline-badge"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h6 class="timeline-title">Tindak Lanjut</h6>
+                                <?php if($data->TindakLanjutProses =="selesai"){?>
+                                    <h6 class="timeline-title" style="color:green"><span class="fa fa-check-circle"></span> <?= $data->TindakLanjutDari?></h6>
+                                <?php }else{ ?>
+                                    <h6 class="timeline-title" style="color:orange"><span class="fa fa fa-window-close"></span> <?= $data->TindakLanjutDari?></h6>
+                                <?php } ?>
                                 </div>
                                 <div class="timeline-body">
-                                    <?php if ($aduanid->AduanProses == "diterima") { ?>
-                                        <?php if ($aduanid->TindakLanjutDeskripsi != NULL) {
-                                            echo $aduanid->TindakLanjutDeskripsi;
+                                    <?php if ($data->AduanProses == "diterima") { ?>
+                                        <?php if ($data->TindakLanjutKdLokasi == $_SESSION['desktik']['kdlokasi']) {
+                                            echo $data->TindakLanjutDeskripsi;
                                         ?>
-                                            <a href="#" class="btn btn-success create-deskripsi" data-id="<?= $aduanid->TindakLanjutId; ?>">
+                                        <span style="color:grey; font-size:12px"><?= $data->TindakLanjutTgl?></span>
+                                        
+                                            <a href="#" class="btn btn-success create-deskripsi" data-id="<?= $data->TindakLanjutId; ?>">
                                                 <i class="fa fa-plus"></i> Edit Deskripsi
                                             </a>
                                         <?php
-                                        } else {
-                                        ?>
-                                            <a href="#" class="btn btn-success create-deskripsi" data-id="<?= $aduanid->TindakLanjutId; ?>">
-                                                <i class="fa fa-plus"></i> Tambah Deskripsi
-                                            </a>
-                                        <?php
-                                        }
+                                        } else { ?>
+                                           <?= $data->TindakLanjutDeskripsi; ?>
+                                           <span style="color:grey; font-size:12px"><?= $data->TindakLanjutTgl?></span>
+                                       <?php }
                                         ?>
                                     <?php } else { ?>
                                         <span style="color: grey;">Belum Ada Tindak Lanjut</span>
@@ -228,26 +237,29 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                 </div>
                             </div>
                         </div>
-                        <div class="timeline-wrapper timeline-wrapper-success">
+                        <?php } ?>
+
+
+                        <!-- <div class="timeline-wrapper timeline-wrapper-success">
                             <div class="timeline-badge"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h6 class="timeline-title">Selesai</h6>
                                 </div>
                                 <div class="timeline-body">
-                                    <?php if ($aduanid->AduanProses == "diterima") { ?>
-                                        <?php if ($aduanid->TindakLanjutProses == "selesai") {
+                                    <?php if ($tindaklanjutid->AduanProses == "diterima") { ?>
+                                        <?php if ($tindaklanjutid->TindakLanjutProses == "selesai") {
                                             echo "Sudah Selesai";
                                         } else {
                                             echo "Belum Selesai";
                                         } ?>
                                     <?php } else { ?>
-                                        <span style="color: grey;">Belum Ada Tindak Lanjut</span>
+                                        <span style="color: grey;">Tindak Lanjut Belum Selesai</span>
 
                                     <?php } ?>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 </div>
@@ -325,7 +337,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
         $(document).on('click', '.create-deskripsi', function(e) {
             e.preventDefault();
             $("#myModal").modal('show');
-            $.post('<?php echo base_url('master/tindak_lanjut/update'); ?>', {
+            $.post('<?php echo base_url('master/tindak_lanjut/update/deskripsi'); ?>', {
                     id: $(this).attr('data-id')
                 },
                 function(html) {
@@ -334,7 +346,19 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
             );
         });
     });
-
+    $(function() {
+        $(document).on('click', '.create-forward', function(e) {
+            e.preventDefault();
+            $("#myModal").modal('show');
+            $.post('<?php echo base_url('master/tindak_lanjut/update/forward'); ?>', {
+                    id: $(this).attr('data-id')
+                },
+                function(html) {
+                    $(".modal-body").html(html);
+                }
+            );
+        });
+    });
     function tindak_lanjut(id) {
         bootbox.confirm({
             message: "Apakah anda yakin akan menindak lanjut permohonan ini?",
@@ -359,6 +383,49 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                 $.gritter.add({
                                     title: 'Informasi',
                                     text: 'Data berhasil Diselesaikan.',
+                                    class_name: 'gritter-info gritter-center'
+                                });
+                                $("#data-table").tabel({
+                                    reload: true
+                                });
+                                setTimeout(function() {
+                                    window.location.reload();
+                                }, 1000);
+                            } else {
+                                bootbox.alert(data.msg);
+                            }
+                        }, "json"
+                    );
+                }
+            }
+        });
+    }
+
+
+    function hapus(id) {
+        bootbox.confirm({
+            message: "Apakah anda yakin akan menghapus data ini?",
+            buttons: {
+                cancel: {
+                    label: '<i class="fa fa-times"></i> Batal',
+                    className: "btn-danger btn-sm"
+                },
+                confirm: {
+                    label: '<i class="fa fa-check"></i> Yakin',
+                    className: "btn-primary btn-sm"
+                }
+            },
+            callback: function(result) {
+                if (result) {
+                    $.post(
+                        '<?= base_url("master/tindak_lanjut_do/delete") ?>', {
+                            id: id
+                        },
+                        function(data) {
+                            if (data.success) {
+                                $.gritter.add({
+                                    title: 'Informasi',
+                                    text: 'Data berhasil Dihapus.',
                                     class_name: 'gritter-info gritter-center'
                                 });
                                 $("#data-table").tabel({

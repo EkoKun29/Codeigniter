@@ -186,10 +186,16 @@
 
                       <div class="profile-name">
                         <p class="name">
-                          <?= strtoupper($_SESSION['siltap']['realname']) ?>
+                          <?= strtoupper($_SESSION['desktik']['realname']) ?>
                         </p>
                         <p class="designation">
-                          <?= "<strong>" . $_SESSION['siltap']['group'] . "</strong>" ?>
+
+                        <?php if($_SESSION['desktik']['kdjabatan'] == 20000 ){
+                          echo "Admin Bidang";  
+                        }else{
+                          echo "Pelapor"; 
+                          }?>
+                          <!-- <?= "<strong>" . $_SESSION['desktik']['group'] . "</strong>" ?> -->
                         </p>
                       </div>
                     </a>
