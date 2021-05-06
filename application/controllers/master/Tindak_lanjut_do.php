@@ -57,6 +57,7 @@ class Tindak_lanjut_do extends YK_Controller
         }elseif("forward"){
             $aduanid = $_POST['AduanId'];
             $kategoriid = $_POST['KategoriId'];
+            $forward = $_POST['forward'];
             $kategori = $this->tindak_lanjut_model->kategoriId($kategoriid);
             $pegawai = $this->tindak_lanjut_model->getPegawaiByLokasi($kategori->KategoriSeksi);
             $data = array(
@@ -65,6 +66,7 @@ class Tindak_lanjut_do extends YK_Controller
                 'TindakLanjutKdLokasi' => $kategori->KategoriSeksi,
                 'TindakLanjutKdJabatan' => 20000,
                 'TindakLanjutDari' => $pegawai->nmpegawai,
+                'TindakLanjutForward' => $forward,
                 'TindakLanjutProses' => "tindak_lanjut",
                 'TindakLanjutTgl' => date("Y-m-d H:m:s"),
             );

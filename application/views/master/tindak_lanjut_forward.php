@@ -24,6 +24,8 @@
                 <option value="<?= $data->KategoriId?>"><?= $data->KategoriNama?></option>
                 <?php } } ?>
                 </select>
+                Pesan Forward
+                <input type="text" name="forward" class="form-control" />
             </div>
             <input type="hidden" name="AduanId" value="<?= $_POST['id']; ?>">
             <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>

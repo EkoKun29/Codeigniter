@@ -18,7 +18,13 @@ class Tindak_lanjut_model extends Ci_Model
         $query = $this->db->get('tindak_lanjut');
         return $query->row_array();
     }
-
+function getForward($aduanid,$kdlokasi,$kdjabatan){
+    $this->db->where('TindakLanjutAduanId',$aduanid);
+    $this->db->where('TindakLanjutKdLokasi',$kdlokasi);
+    $this->db->where('TindakLanjutKdJabatan',$kdjabatan);
+    $q = $this->db->get('tindak_lanjut');
+    return $q->row();
+}
     function getAll($nip)
     {
         $this->db->select('*');

@@ -130,10 +130,15 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                             <td>Tindak Lanjut: </td>
                             <td><b><?= $aduanid->TindakLanjutDari ?></b> </td>
                         </tr> -->
+<?php 
+
+$tindaklanjut = $this->tindak_lanjut_model->getForward($aduanid->AduanId,$_SESSION['desktik']['kdlokasi'],20000);
+if($tindaklanjut->TindakLanjutForward != NULL){?>
                         <tr>
-                            <td>Deskripsi Tindak Lanjut: </td>
-                            <td><b><?= $aduanid->TindakLanjutDeskripsi ?></b> </td>
+                            <td>Forward Tindak Lanjut: </td>
+                            <td><b><?= $tindaklanjut->TindakLanjutForward ?></b> </td>
                         </tr>
+<?php } ?>
                         <tr>
                             <td>Tanggal Permohonan: </td>
                             <td><b><?= $aduanid->AduanTglPermohonan    ?></b> </td>
