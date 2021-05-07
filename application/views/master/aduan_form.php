@@ -34,7 +34,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Form <?= $sub == 'add' ? 'Tambah' : 'Edit' ?> Pengguna</h4>
+                    <h4 class="card-title">Form <?= $sub == 'add' ? 'Tambah' : 'Edit' ?> Permohonan</h4>
                     <form enctype="multipart/form-data" class="forms-sample" action="<?= base_url("master/aduan_do/$sub") ?>" method="post" >
                         <?= $user['KategoriId'] ?>
                         <div class="form-group row">

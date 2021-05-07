@@ -9,6 +9,7 @@ class Aduan_do extends YK_Controller
         $this->load->model('aduan_model');
         $this->load->library('form_validation');
         $this->load->library('session');
+        $this->load->helper('bot_telegram');
     }
     var $rules = array(
 
@@ -73,7 +74,9 @@ class Aduan_do extends YK_Controller
                 'AduanFiles3' => $file3,
             );
 
-
+            if($kategori->KategoriChatID != NULL){
+                sendMessage($kategori->KategoriChatID,"Aduan Baru Dari : ". $_SESSION['desktik']['realname']." ".$_SESSION['desktik']['nminstansi']." => ".$_POST['deskripsi']);
+            }
 
             if ($upload1['result'] == "success") { 
                 $image1 = "berhasil";
@@ -92,6 +95,7 @@ class Aduan_do extends YK_Controller
             }
 
             $result = $this->aduan_model->add($data);
+
             if (!$result) {
                 $this->session->set_flashdata(array('added' => true, 'msg' => 'Data baru berhasil ditambahkan!'));
                 echo json_encode(array('success' => true, 'msg' => 'Data Baru Berhasil Disimpan.','image1' => $image1,'image2' => $image2,'image3' => $image3));
@@ -163,6 +167,9 @@ class Aduan_do extends YK_Controller
                 'TindakLanjutProses' => "tindak_lanjut",
                 'TindakLanjutTgl' => date("Y-m-d H:d:s"),
             );
+            if($aduan->KategoriChatID != NULL){
+                sendMessage($aduan->KategoriChatID,"Aduan ID ".$aduan->NoTiket." Berhasil Ditindak Lanjuti");
+            }
             $result = $this->aduan_model->tindak_lanjut($_POST['id'], $data);
 
 
@@ -178,7 +185,7 @@ class Aduan_do extends YK_Controller
                 'AduanTglVerifikasi' => date("Y-m-d H:d:s"),
             );
             $result = $this->aduan_model->tindak_lanjut($_POST['id'], $data);
-
+            
 
             if (!$result) {
                 echo json_encode(array('success' => true, 'msg' => 'User berhasil ditolak!'));

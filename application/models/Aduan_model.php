@@ -35,9 +35,9 @@ class Aduan_model extends Ci_Model
         $this->db->select('*');
         $this->db->from('aduan a');
         $this->db->join('ref_kategori b', 'b.KategoriId = a.AduanKategoriId');
-        $this->db->join('_lokasi c', 'c.kdlokasi = a.AduanKdLokasi');
+        // $this->db->join('_lokasi c', 'c.kdlokasi = a.AduanKdLokasi');
         // $this->db->join('tindak_lanjut d', 'd.TindakLanjutAduanId = a.AduanId');
-        $this->db->where('a.AduanKategoriId', $kategori);
+        $this->db->where('a.AduanSeksi', $kategori);
         // $this->db->where('a.AduanKdjabatan', 2000);
         $query = $this->db->get();
         return $query->result();

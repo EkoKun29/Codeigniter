@@ -9,6 +9,7 @@ class Tindak_lanjut_do extends YK_Controller
         $this->load->model('tindak_lanjut_model');
         $this->load->library('form_validation');
         $this->load->library('session');
+        $this->load->helper('bot_telegram');
     }
     var $rules = array(
 
@@ -48,6 +49,7 @@ class Tindak_lanjut_do extends YK_Controller
                 'TindakLanjutProses' => 'selesai',
                 'TindakLanjutTglSelesai' => date("Y-m-d H:d:s"),
             );
+
             $result = $this->tindak_lanjut_model->update($_POST['id'], $data);
             if (!$result) {
                 echo json_encode(array('success' => true, 'msg' => 'User berhasil dihapus!'));
@@ -70,6 +72,10 @@ class Tindak_lanjut_do extends YK_Controller
                 'TindakLanjutProses' => "tindak_lanjut",
                 'TindakLanjutTgl' => date("Y-m-d H:m:s"),
             );
+            if($kategori->KategoriChatID != NULL){
+                sendMessage($kategori->KategoriChatID,"Anda Mendapat Forward Tindak Lanjut Silahkan Buka https://desktik.patikab.go.id");
+            }
+            
             $result = $this->tindak_lanjut_model->add($data);
             redirect(base_url('master/tindak_lanjut/detail/' . $aduanid ));
         }
