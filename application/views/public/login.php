@@ -76,7 +76,7 @@
           </div>
           <table>
             <tr>
-              <td class="col-md-6"><a style="text-align: right;" href="<?= base_url() ?>">Registrasi</a></td>
+              <!-- <td class="col-md-6"><a style="text-align: right;" href="<?= base_url() ?>">Registrasi</a></td> -->
               <td class="col-md-6"><a style="text-align: right;" href="<?= base_url() ?>">Kembali</a></td>
             </tr>
           </table>

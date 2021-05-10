@@ -48,7 +48,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                     <tr>
                                         <th>Tiket</th>
                                         <th>Pengirim</th>
-                                        <th>Jabatan</th>
+                                        <th>Instansi</th>
                                         <th>Status</th>
                                         <th style="width:100px;">#</th>
                                     </tr>
@@ -68,8 +68,9 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                                 echo "style='background-color:rgb(0, 180, 255); color:white'";
                                             } ?>>
                                             <td><?= $data->NoTiket; ?></td>
-                                            <td><?= $data->AduanNamaPengirim; ?></td>
-                                            <td><?= $data->nmjabatan; ?></td>
+                                            <td><?= $data->AduanNamaPengirim; ?><br>
+                                            <span style="color:green"><?= $data->nmjabatan; ?></span></td>
+                                            <td><?= $data->nminstansi; ?></td>
                                             <td>
                                                 <div class="badge <?= $status_proses ?> badge-fw"><?= $data->AduanProses; ?></div>
                                             </td>
