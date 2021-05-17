@@ -54,7 +54,12 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($aduan as $data) {
+                                    <?php 
+                                    
+                                    foreach($KategoriByKdLokasi as $kategori){
+                                        $aduanByKategori = $this->aduan_model->getAllByBidang($kategori->KategoriId);
+                                    
+                                    foreach ($aduanByKategori as $data) {
                                         if ($data->AduanProses == "diterima") {
                                             $status_proses = "badge-success";
                                         } elseif ($data->AduanProses == "ditolak") {
@@ -95,7 +100,7 @@ function Proses($aduan_id, $aduan_proses, $aduan_deskripsi, $status)
                                                 <?php } ?>
 
                                         </tr>
-                                    <?php } ?>
+                                    <?php } } ?>
                                 </tbody>
                             </table>
                         </div>

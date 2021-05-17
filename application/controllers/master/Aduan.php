@@ -19,6 +19,7 @@ class Aduan extends YK_Controller
         } else {
             if ($cek_adm_bidang->num_rows() != 0 AND $sess['kdjabatan']==20000) {
                 $data['aduan'] = $this->aduan_model->getAllByBidang($cek_adm_bidang->row()->KategoriId);
+                $data['KategoriByKdLokasi'] = $this->aduan_model->getKategoriBy($sess['kdlokasi']);
                 $this->load_view('master/aduan_bidang', $data);
             } else {
                 $data['aduan'] = $this->aduan_model->getAll($sess['nip']);
@@ -42,6 +43,7 @@ class Aduan extends YK_Controller
                 $data['aduan'] = $this->aduan_model->getAllByBidang($cek_adm_bidang->row()->KategoriId);
                 $data['aduanid'] = $this->aduan_model->getId($aduan_id);
                 $data['tindak_lanjut'] = $this->aduan_model->getTindakLanjut($aduan_id);
+                $data['KategoriByKdLokasi'] = $this->aduan_model->getKategoriBy($sess['kdlokasi']);
                 $this->load_view('master/aduan_bidang', $data);
             } else {
                 $data['aduan'] = $this->aduan_model->getAll($sess['nip']);

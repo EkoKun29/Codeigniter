@@ -59,9 +59,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">File Bukti 1 <span style="color:red">(Boleh Dikosongkan)</span></label>
+                            <label class="col-sm-3 col-form-label">File Bukti 1 <span style="color:red">(Wajib Diisi)</span></label>
                             <div class="col-sm-6">
-                                <input name="file1" type="file" placeholder="Files" class="form-control" value="<?= $user['files1'] ?>" />
+                                <input name="file1" type="file" placeholder="Files" class="form-control" value="<?= $user['files1'] ?>" required />
                             </div>
                         </div>
 

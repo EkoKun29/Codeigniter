@@ -125,6 +125,12 @@ class Aduan_model extends Ci_Model
         $q = $this->db->get('ref_kategori');
         return $q->row();
     }
+    function getKategoriBy($kdlokasi)
+    {
+        $this->db->where('KategoriSeksi', $kdlokasi);
+        $q = $this->db->get('ref_kategori');
+        return $q->result();
+    }
     function lastid()
     {
         $this->db->order_by('AduanId', 'desc');
