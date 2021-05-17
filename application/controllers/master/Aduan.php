@@ -2,7 +2,7 @@
 
 class Aduan extends YK_Controller
 {
-
+//test
     function __construct()
     {
         parent::__construct();
