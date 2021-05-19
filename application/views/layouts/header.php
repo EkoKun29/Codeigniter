@@ -259,14 +259,10 @@
                      */
                         foreach ($menu as $submenu2) {
                           if ($submenu2['MenuParentId'] == $submenu1['MenuId']) {
-                            
-                            if($_SESSION['desktik']['kdjabatan'] == 20000 AND $submenu2["MenuModule"]=="master/tindak_lanjut"){
                             echo '<li' . ($submenu2["MenuHasSubmenu"] ? ' class="nav-link"' : '') . '>';
                             echo '    <a href="' . ($submenu2["MenuHasSubmenu"] ? '#' . $main["MenuName"] : base_url($submenu2["MenuModule"])) . '"' . ($submenu2["MenuHasSubmenu"] ? ' class=" nav-link"' : '') . '>';
                             echo            $submenu2["MenuName"];
                             echo '    </a>';
-                            }
-
                             if ($submenu2["MenuHasSubmenu"]) {
                               echo '<div class="collapse" id="' . $main["MenuName"] . '">';
                               echo '<ul class="nav flex-column nav-second-level">';
