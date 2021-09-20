@@ -30,22 +30,23 @@ class Login_do extends CI_Controller
         if (sizeof($data) > 0) {
 
             $group = $this->authentication_model->getGroup($data['UserId']);
+            $pegawai = $this->authentication_model->pegawaiByNip($data['UserNip']);
             if ($data['UserName'] != "admin") {
-                $pegawai = $this->authentication_model->pegawaiByNip($data['UserNip']);
+                
                 $_SESSION['desktik']['nip'] =  $pegawai->nip;
                 $_SESSION['desktik']['kdlokasi'] =  $pegawai->kdlokasi;
                 $_SESSION['desktik']['kdinstansi'] =  $pegawai->kdinstansi;
                 $_SESSION['desktik']['nminstansi'] =  $pegawai->nminstansi;
                 $_SESSION['desktik']['nmjabatan'] =  $pegawai->nmjabatan;
+$_SESSION['desktik']['kdjabatan'] =  $pegawai->kdjabatan;
             }
-            $_SESSION['desktik']['kdjabatan'] =  $pegawai->kdjabatan;
+            
             $_SESSION['desktik']['groupid'] = $group->GroupId;
             $_SESSION['desktik']['group'] = $group->GroupName;
             $_SESSION['desktik']['userid'] = $data['UserId'];
             $_SESSION['desktik']['username'] = $data['UserName'];
             $_SESSION['desktik']['groupid'] = $data['UserGroupGroupId'];
             $_SESSION['desktik']['realname'] = $data['UserRealName'];
-
             return TRUE;
         } else {
             $this->form_validation->set_message("validate", "Nama Pengguna atau Kata Sandi salah.");

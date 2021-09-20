@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://siltap.patikab.go.id/';
+$config['base_url'] = 'http://localhost/desktik-v2/';
 
 
 
@@ -102,8 +102,8 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = false;
-$config['environment'] = 'production';
+$config['enable_hooks'] = true;
+$config['environment'] = 'development';
 /*
 |--------------------------------------------------------------------------
 | Class Extension Prefix
