@@ -15,4 +15,4 @@ application/cache/
 .htaccess
 latihan/
 files/
-db/
+#db/
