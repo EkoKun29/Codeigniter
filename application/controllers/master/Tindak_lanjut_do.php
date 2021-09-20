@@ -73,7 +73,7 @@ class Tindak_lanjut_do extends YK_Controller
                 'TindakLanjutTgl' => date("Y-m-d H:m:s"),
             );
             if($kategori->KategoriChatID != NULL){
-                sendMessage($kategori->KategoriChatID,"Anda Mendapat Forward Tindak Lanjut Silahkan Buka https://desktik.patikab.go.id");
+                //sendMessage($kategori->KategoriChatID,"Anda Mendapat Forward Tindak Lanjut Silahkan Buka https://desktik.patikab.go.id");
             }
             
             $result = $this->tindak_lanjut_model->add($data);
