@@ -75,7 +75,11 @@ class Aduan_do extends YK_Controller
             );
 
             if($kategori->KategoriChatID != NULL){
+<<<<<<< HEAD
                /// sendMessage($kategori->KategoriChatID,"Aduan Baru Dari : ". $_SESSION['desktik']['realname']." ".$_SESSION['desktik']['nminstansi']." => ".$_POST['deskripsi']);
+=======
+                //sendMessage($kategori->KategoriChatID,"Aduan Baru Dari : ". $_SESSION['desktik']['realname']." ".$_SESSION['desktik']['nminstansi']." => ".$_POST['deskripsi']);
+>>>>>>> e3966c814671b40a22d011a1afe0d0bfc7bbba00
             }
 
             if ($upload1['result'] == "success") { 
