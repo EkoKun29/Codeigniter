@@ -206,6 +206,7 @@ class Aduan_model extends Ci_Model
             return $return;
         }
     }
+    
 
 }
 

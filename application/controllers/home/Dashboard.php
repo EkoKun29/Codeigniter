@@ -15,6 +15,11 @@ class Dashboard extends YK_Controller
 
         $this->load_view('home/dashboard', $data);
     }
+    function update()
+    {
+        $data['laporan']=$this->Laporan_model->getTgl();
+        $this->load->view('view/home/dashboard',$data);
+      }
 }
 
 /*
