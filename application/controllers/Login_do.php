@@ -38,15 +38,12 @@ class Login_do extends CI_Controller
                 $_SESSION['desktik']['kdinstansi'] =  $pegawai->kdinstansi;
                 $_SESSION['desktik']['nminstansi'] =  $pegawai->nminstansi;
                 $_SESSION['desktik']['nmjabatan'] =  $pegawai->nmjabatan;
-<<<<<<< HEAD
-            
-            $_SESSION['desktik']['kdjabatan'] =  $pegawai->kdjabatan;
-            }
-=======
+
+
 $_SESSION['desktik']['kdjabatan'] =  $pegawai->kdjabatan;
             }
             
->>>>>>> e3966c814671b40a22d011a1afe0d0bfc7bbba00
+
             $_SESSION['desktik']['groupid'] = $group->GroupId;
             $_SESSION['desktik']['group'] = $group->GroupName;
             $_SESSION['desktik']['userid'] = $data['UserId'];

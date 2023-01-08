@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <div class="content-wrapper">
 <div class="container-fluid">
@@ -26,7 +25,7 @@ Highcharts.chart('container', {
     },
   
     xAxis: {
-        categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
+        categories: ['Januari', 'Maret', 'Juni', 'September', 'Desember'],
         tickmarkPlacement: 'on',
         title: {
             enabled: false
@@ -38,13 +37,13 @@ Highcharts.chart('container', {
         },
         labels: {
             formatter: function () {
-                return this.value / 1000;
+                return this.value;
             }
         }
     },
     tooltip: {
         split: true,
-        valueSuffix: ' millions'
+        valueSuffix: ' '
     },
     plotOptions: {
         area: {
@@ -58,27 +57,16 @@ Highcharts.chart('container', {
         }
     },
     series: [{
-        name: 'Asia',
-        data: [502, 635, 809, 947, 1402, 3634, 5268]
+        name: 'Aduan',
+        data: [4, 4, 0, 1, 2]
     }, {
-        name: 'Africa',
-        data: [106, 107, 111, 133, 221, 767, 1766]
+        name: 'Tindak Lanjut',
+        data: [2, 3, 0, 1, 2]
     
     }]
 });
 </script>
-
-</div>
-</div>
-</div>
-</div>
-</html>
-=======
-<div class="content-wrapper">
-  <div class="container-fluid">
-      <div class="col-sm-12">
-        <html>
-          <head>
+<br>
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
             <script type="text/javascript">
               google.charts.load('current', {'packages':['bar']});
@@ -87,17 +75,10 @@ Highcharts.chart('container', {
               function drawChart() {
                 var data = google.visualization.arrayToDataTable([
                   ['Bulan', 'Aduan', 'Tindak Lanjut'],
-                  ['Januari', 10, 7],
-                  ['Februari', 7, 4],
-                  ['Maret', 9, 8],
-                  ['April', 5, 4],
-                  ['Mei', 10, 8],
-                  ['Juni', 9, 7],
-                  ['Juli', 5, 5],
-                  ['Agustus', 10, 7],
-                  ['September', 6, 6],
-                  ['Oktober', 10, 11],
-                  ['November', 6, 3],
+                  ['Januari', 4, 4],
+                  ['Maret', 4, 3],
+                  ['Juni', 0, 0],
+                  ['September', 1, 1],
                   ['Desember', 2, 2],
                   //<
                   // $query = "SELECT * from chart";
@@ -126,13 +107,13 @@ Highcharts.chart('container', {
                 chart.draw(data, google.charts.Bar.convertOptions(options));
               }
             </script>
-          </head>
+       
           <body>
             <div id="barchart_material" style="width: 1000px; height: 600px;"></div>
           </body>
-        </html>
-      </div>
-    </div>
-  </div>
+          </div>
 </div>
->>>>>>> e3966c814671b40a22d011a1afe0d0bfc7bbba00
+</div>
+</div>
+</html>
+            </br>

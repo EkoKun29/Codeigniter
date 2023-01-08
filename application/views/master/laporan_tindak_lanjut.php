@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-Jopan
-=======
 <div class="content-wrapper">
     <div class="container-fluid">
         <div class="row mb-2">
